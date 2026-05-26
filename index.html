@@ -116,7 +116,7 @@
 
                 <!-- Desktop CTA -->
                 <div class="hidden md:flex items-center space-x-4">
-                    <a href="#" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Masuk</a>
+                    <a href="dashboard.html" class="text-sm font-medium text-slate-600 hover:text-brand-600 transition-colors">Masuk</a>
                     <a href="#" onclick="openModal(event)" class="inline-flex items-center justify-center px-5 py-2.5 text-sm font-medium text-white bg-brand-500 rounded-lg hover:bg-brand-600 focus:ring-4 focus:ring-brand-100 transition-all shadow-md shadow-brand-500/20 hover:-translate-y-0.5">
                         Mulai Gratis
                     </a>
@@ -139,7 +139,7 @@
                 <a href="#mitra" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-brand-500 hover:bg-brand-50">Mitra</a>
                 <a href="#harga" class="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-brand-500 hover:bg-brand-50">Harga</a>
                 <div class="pt-4 flex flex-col gap-3">
-                    <a href="#" class="w-full text-center px-4 py-2 border border-slate-200 rounded-lg text-slate-700 font-medium hover:bg-slate-50">Masuk</a>
+                    <a href="dashboard.html" class="w-full text-center px-4 py-2 border border-slate-200 rounded-lg text-slate-700 font-medium hover:bg-slate-50">Masuk</a>
                     <a href="#" onclick="openModal(event); document.getElementById('mobile-menu').classList.add('hidden')" class="w-full text-center px-4 py-2 bg-brand-500 rounded-lg text-white font-medium hover:bg-brand-600 shadow-md">Mulai Gratis</a>
                 </div>
             </div>
@@ -591,7 +591,7 @@
                             <span class="text-4xl font-extrabold text-white">Rp 99rb</span>
                             <span class="text-brand-200">/bulan</span>
                         </div>
-                        <a href="#" class="block w-full py-3 px-4 bg-white text-brand-600 font-bold text-center rounded-xl shadow-md hover:bg-slate-50 transition-colors mb-8">Pilih Paket Pro</a>
+                        <a href="#" onclick="openModal(event)" class="block w-full py-3 px-4 bg-white text-brand-600 font-bold text-center rounded-xl shadow-md hover:bg-slate-50 transition-colors mb-8">Pilih Paket Pro</a>
                         
                         <div class="space-y-4">
                             <div class="flex items-start gap-3">
@@ -878,8 +878,7 @@
             }, 300); // Wait for transition to finish
         }
 
-        // Google Apps Script Form Submission Logic
-        // TODO: Ganti URL ini dengan URL Web App Google Apps Script Anda setelah di-deploy
+        // Google Apps Script Form Submission Logic (ACTIVATED)
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwKbN_R8gdRG5_jLniXD0LXZSMTUiU8gO5Ae-s3FAnfxV7gpaRstdovRiJbS_izuZeQpw/exec'; 
         const form = document.forms['submit-to-google-sheet'];
         const submitBtn = document.getElementById('submitBtn');
@@ -897,26 +896,7 @@
                 submitBtn.disabled = true;
                 submitBtn.classList.add('opacity-75', 'cursor-not-allowed');
 
-                // DEMO MODE: Simulasi loading (karena URL Script belum ada)
-                // Jika Anda sudah punya URL GAS, HAPUS blok setTimeout ini dan gunakan fetch di bawahnya
-                setTimeout(() => {
-                    btnText.textContent = 'Simpan ke Google Sheets';
-                    btnLoader.classList.add('hidden');
-                    submitBtn.disabled = false;
-                    submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
-                    
-                    form.reset();
-                    successMessage.classList.remove('hidden');
-                    
-                    setTimeout(() => {
-                        successMessage.classList.add('hidden');
-                        closeModal();
-                    }, 4000);
-                }, 1500);
-
-                /* --- KODE ASLI UNTUK GOOGLE APPS SCRIPT ---
-                   (Hapus tanda komentar /* di atas dan di bawah jika URL sudah diisi)
-                   
+                // Mengirim ke Google Apps Script
                 fetch(scriptURL, { method: 'POST', body: new FormData(form)})
                     .then(response => {
                         btnText.textContent = 'Berhasil Terdaftar';
@@ -940,7 +920,6 @@
                         submitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
                         alert('Maaf, koneksi ke database gagal. Silakan coba lagi.');
                     });
-                ------------------------------------------ */
             });
         }
     </script>
