@@ -3,444 +3,558 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Toko - iMersWAstore</title>
-    <!-- Tailwind CSS -->
+    <title>Dashboard - iMersWAstore</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        emerald: {
-                            50: '#ecfdf5',
-                            100: '#d1fae5',
-                            500: '#10b981',
-                            600: '#059669',
-                            700: '#047857',
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body { font-family: 'Inter', sans-serif; }
-        /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
     </style>
 </head>
-<body class="bg-gray-50 text-slate-800 antialiased overflow-hidden flex h-screen">
+<body class="bg-slate-50 text-slate-800 antialiased overflow-hidden flex h-screen">
 
-    <!-- Mobile Sidebar Overlay -->
-    <div id="sidebarOverlay" class="fixed inset-0 bg-slate-900/50 z-40 hidden lg:hidden transition-opacity" onclick="toggleSidebar()"></div>
+    <!-- CEK SESI LOGIN SEBELUM RENDER -->
+    <script>
+        let currentUser = {
+            id: 'ADM-001',
+            username: 'admin_demo',
+            role: 'admin',
+            nama_toko: 'Admin Demo (Preview)',
+            slug_toko: 'admin-demo'
+        };
+
+        try {
+            const userSession = localStorage.getItem('iMersWA_User');
+            if (!userSession) {
+                if (window.location.protocol !== 'blob:' && window.location.protocol !== 'data:' && window.self === window.top) {
+                    window.location.href = 'login.html';
+                } else {
+                    console.warn("Sesi tidak ditemukan. Menggunakan data mock admin untuk keperluan preview.");
+                    // Untuk demo, kita set jadi 'user' agar bisa lihat semua menu POS & Katalog
+                    currentUser.role = 'user'; 
+                    currentUser.nama_toko = 'Toko Demo Preview';
+                }
+            } else {
+                currentUser = JSON.parse(userSession);
+            }
+        } catch (e) {
+            console.error("Auth check error:", e);
+        }
+
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwKbN_R8gdRG5_jLniXD0LXZSMTUiU8gO5Ae-s3FAnfxV7gpaRstdovRiJbS_izuZeQpw/exec';
+    </script>
 
     <!-- Sidebar -->
-    <aside id="sidebar" class="fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-200 transform -translate-x-full lg:translate-x-0 transition-transform duration-300 flex flex-col h-full">
+    <aside class="w-64 bg-white border-r border-slate-200 flex flex-col h-full z-20 transition-all">
         <!-- Logo -->
-        <div class="h-16 flex items-center px-6 border-b border-gray-100">
-            <a href="#" class="flex items-center gap-2">
-                <div class="bg-emerald-500 text-white p-1.5 rounded-lg">
-                    <i data-lucide="store" class="w-5 h-5"></i>
-                </div>
-                <span class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-emerald-400">iMersWAstore</span>
-            </a>
+        <div class="h-16 flex items-center px-6 border-b border-slate-100">
+            <div class="bg-emerald-500 text-white p-1.5 rounded-lg mr-2">
+                <i data-lucide="store" class="w-5 h-5"></i>
+            </div>
+            <span class="font-bold text-xl tracking-tight">iMers<span class="text-emerald-500">WA</span></span>
         </div>
 
-        <!-- Store Info -->
-        <div class="px-6 py-4 border-b border-gray-100">
+        <!-- User Info -->
+        <div class="p-5 border-b border-slate-100">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">
-                    KB
-                </div>
-                <div>
-                    <h3 class="font-semibold text-sm">Kue Bunda Siska</h3>
-                    <p class="text-xs text-gray-500">toko.imerswa.com/kuebunda</p>
+                <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-sm uppercase" id="uiAvatar">A</div>
+                <div class="overflow-hidden">
+                    <h3 class="font-bold text-sm truncate" id="uiTokoName">Loading...</h3>
+                    <div class="flex items-center gap-1 mt-0.5">
+                        <span id="uiRoleBadge" class="px-1.5 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider">ROLE</span>
+                        <p class="text-xs text-slate-500 truncate" id="uiUsername">@user</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Navigation -->
-        <nav class="flex-1 px-4 py-4 space-y-1 overflow-y-auto">
-            <a href="#" class="flex items-center gap-3 px-3 py-2.5 bg-emerald-50 text-emerald-600 rounded-lg font-medium">
-                <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
-                Ringkasan
-            </a>
-            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-gray-50 hover:text-slate-900 rounded-lg transition-colors font-medium">
-                <i data-lucide="package" class="w-5 h-5"></i>
-                Katalog Produk
-            </a>
-            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-gray-50 hover:text-slate-900 rounded-lg transition-colors font-medium">
-                <i data-lucide="shopping-cart" class="w-5 h-5"></i>
-                Pesanan Masuk
-                <span class="ml-auto bg-red-500 text-white text-[10px] px-2 py-0.5 rounded-full font-bold">3</span>
-            </a>
-            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-gray-50 hover:text-slate-900 rounded-lg transition-colors font-medium">
-                <i data-lucide="users" class="w-5 h-5"></i>
-                Pelanggan
-            </a>
-            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-gray-50 hover:text-slate-900 rounded-lg transition-colors font-medium">
-                <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
-                Laporan Excel
-            </a>
-            
-            <div class="pt-4 mt-4 border-t border-gray-100">
-                <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-gray-50 hover:text-slate-900 rounded-lg transition-colors font-medium">
-                    <i data-lucide="settings" class="w-5 h-5"></i>
-                    Pengaturan Toko
-                </a>
-            </div>
+        <!-- Navigation (Diisi oleh JS) -->
+        <nav class="flex-1 px-4 py-4 space-y-1 overflow-y-auto" id="navMenu">
+            <!-- Loading placeholder -->
         </nav>
 
         <!-- Sidebar Footer -->
-        <div class="p-4 border-t border-gray-100">
-            <button class="flex items-center gap-2 text-sm text-red-600 font-medium hover:text-red-700 w-full px-3 py-2">
-                <i data-lucide="log-out" class="w-4 h-4"></i>
-                Keluar
+        <div class="p-4 border-t border-slate-100 space-y-2">
+            <button onclick="window.open('https://toko.imerswastore.com/' + currentUser.slug_toko, '_blank')" class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-emerald-600 hover:bg-emerald-50 rounded-lg w-full transition-colors">
+                <i data-lucide="external-link" class="w-4 h-4"></i> Lihat Toko
+            </button>
+            <button onclick="doLogout()" class="flex items-center gap-3 px-3 py-2 text-sm font-medium text-red-500 hover:bg-red-50 rounded-lg w-full transition-colors">
+                <i data-lucide="log-out" class="w-4 h-4"></i> Keluar
             </button>
         </div>
     </aside>
 
     <!-- Main Content -->
-    <main class="flex-1 flex flex-col min-w-0 overflow-hidden">
-        <!-- Top Header -->
-        <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 sm:px-6 z-10">
-            <div class="flex items-center gap-4">
-                <button onclick="toggleSidebar()" class="lg:hidden text-slate-500 hover:text-slate-700 focus:outline-none">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
-                <h1 class="text-xl font-semibold text-slate-800">Dashboard</h1>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <a href="#" class="hidden sm:flex items-center gap-1.5 text-sm font-medium text-emerald-600 hover:text-emerald-700 bg-emerald-50 px-3 py-1.5 rounded-full transition-colors">
-                    <i data-lucide="external-link" class="w-4 h-4"></i>
-                    Lihat Toko
-                </a>
-                <button class="relative p-2 text-slate-400 hover:text-slate-600 transition-colors">
-                    <i data-lucide="bell" class="w-5 h-5"></i>
-                    <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
-                </button>
-            </div>
+    <main class="flex-1 flex flex-col min-w-0 overflow-hidden relative">
+        <!-- Header -->
+        <header class="h-16 bg-white border-b border-slate-200 flex items-center px-8 justify-between z-10 shadow-sm">
+            <h1 class="text-xl font-bold text-slate-800" id="pageTitle">Dashboard</h1>
+            <div class="text-sm text-slate-500 font-medium" id="headerDate">Selasa, 26 Mei</div>
         </header>
 
-        <!-- Dashboard Content Scrollable Area -->
-        <div class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
+        <!-- Container Konten yang bisa di-scroll -->
+        <div class="flex-1 overflow-y-auto p-8 bg-slate-50 relative">
             
-            <div class="max-w-7xl mx-auto space-y-6">
+            <!-- ========================================== -->
+            <!-- VIEW: DASHBOARD UTAMA -->
+            <!-- ========================================== -->
+            <div id="view-dashboard" class="view-section max-w-6xl mx-auto space-y-6">
                 <!-- Welcome Banner -->
-                <div class="bg-gradient-to-r from-emerald-600 to-emerald-400 rounded-2xl p-6 text-white shadow-lg shadow-emerald-200 relative overflow-hidden">
+                <div class="bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-2xl p-6 shadow-md relative overflow-hidden text-white">
+                    <div class="absolute right-0 top-0 opacity-10"><i data-lucide="trending-up" class="w-48 h-48 -mr-10 -mt-10"></i></div>
                     <div class="relative z-10">
-                        <h2 class="text-2xl font-bold mb-1">Selamat datang kembali, Siska! 👋</h2>
-                        <p class="text-emerald-50">Toko Anda dilihat 45 kali hari ini. Ada 3 pesanan baru menunggu proses.</p>
-                    </div>
-                    <!-- Decorative pattern -->
-                    <div class="absolute right-0 top-0 opacity-10">
-                        <i data-lucide="trending-up" class="w-48 h-48 -mr-10 -mt-10"></i>
+                        <h2 class="text-2xl font-bold mb-1">Selamat datang kembali, <span id="welcomeName">User</span>! 👋</h2>
+                        <p class="text-emerald-50 text-sm">Berikut adalah ringkasan aktivitas akun Anda hari ini.</p>
                     </div>
                 </div>
 
                 <!-- Stats Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <!-- Stat 1 -->
-                    <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                         <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-sm font-medium text-slate-500">Pendapatan Bulan Ini</h3>
-                            <div class="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
-                                <i data-lucide="wallet" class="w-4 h-4"></i>
-                            </div>
+                            <h3 class="text-sm font-medium text-slate-500">Pendapatan</h3>
+                            <div class="w-8 h-8 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center"><i data-lucide="wallet" class="w-4 h-4"></i></div>
                         </div>
-                        <div class="text-2xl font-bold text-slate-800 mb-1">Rp 4.250.000</div>
-                        <div class="flex items-center text-xs text-emerald-600 font-medium">
-                            <i data-lucide="arrow-up-right" class="w-3 h-3 mr-1"></i>
-                            <span>12.5% dibanding bulan lalu</span>
-                        </div>
+                        <div class="text-2xl font-bold text-slate-800">Rp 4.250.000</div>
                     </div>
-                    
-                    <!-- Stat 2 -->
-                    <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                         <div class="flex items-center justify-between mb-4">
                             <h3 class="text-sm font-medium text-slate-500">Pesanan Baru</h3>
-                            <div class="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
-                                <i data-lucide="shopping-bag" class="w-4 h-4"></i>
-                            </div>
+                            <div class="w-8 h-8 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center"><i data-lucide="shopping-bag" class="w-4 h-4"></i></div>
                         </div>
-                        <div class="text-2xl font-bold text-slate-800 mb-1">24</div>
-                        <div class="flex items-center text-xs text-emerald-600 font-medium">
-                            <i data-lucide="arrow-up-right" class="w-3 h-3 mr-1"></i>
-                            <span>3 pesanan hari ini</span>
-                        </div>
+                        <div class="text-2xl font-bold text-slate-800">24</div>
                     </div>
-
-                    <!-- Stat 3 -->
-                    <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                         <div class="flex items-center justify-between mb-4">
                             <h3 class="text-sm font-medium text-slate-500">Total Produk</h3>
-                            <div class="w-8 h-8 rounded-full bg-purple-50 flex items-center justify-center text-purple-600">
-                                <i data-lucide="package" class="w-4 h-4"></i>
-                            </div>
+                            <div class="w-8 h-8 rounded-full bg-purple-50 text-purple-600 flex items-center justify-center"><i data-lucide="package" class="w-4 h-4"></i></div>
                         </div>
-                        <div class="text-2xl font-bold text-slate-800 mb-1">45</div>
-                        <div class="flex items-center text-xs text-slate-500 font-medium">
-                            <span>Katalog aktif</span>
-                        </div>
+                        <div class="text-2xl font-bold text-slate-800">12</div>
                     </div>
-
-                    <!-- Stat 4 -->
-                    <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
                         <div class="flex items-center justify-between mb-4">
                             <h3 class="text-sm font-medium text-slate-500">Klik WhatsApp</h3>
-                            <div class="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center text-green-600">
-                                <i data-lucide="message-circle" class="w-4 h-4"></i>
-                            </div>
+                            <div class="w-8 h-8 rounded-full bg-green-50 text-green-600 flex items-center justify-center"><i data-lucide="message-circle" class="w-4 h-4"></i></div>
                         </div>
-                        <div class="text-2xl font-bold text-slate-800 mb-1">128</div>
-                        <div class="flex items-center text-xs text-emerald-600 font-medium">
-                            <i data-lucide="arrow-up-right" class="w-3 h-3 mr-1"></i>
-                            <span>+5.2% minggu ini</span>
-                        </div>
+                        <div class="text-2xl font-bold text-slate-800">128</div>
                     </div>
                 </div>
 
-                <!-- Chart & Recent Orders -->
-                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                    <!-- Chart Area -->
-                    <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm lg:col-span-2">
-                        <div class="flex items-center justify-between mb-4">
-                            <h3 class="font-semibold text-slate-800">Grafik Penjualan</h3>
-                            <select class="text-sm border-gray-200 rounded-lg text-slate-600 bg-gray-50 focus:ring-emerald-500 focus:border-emerald-500 p-1.5">
-                                <option>7 Hari Terakhir</option>
-                                <option>Bulan Ini</option>
-                            </select>
-                        </div>
-                        <div class="relative h-64 w-full">
-                            <canvas id="salesChart"></canvas>
-                        </div>
-                    </div>
-
-                    <!-- Recent Actions/Orders Mini -->
-                    <div class="bg-white p-5 rounded-2xl border border-gray-100 shadow-sm lg:col-span-1 flex flex-col">
-                        <h3 class="font-semibold text-slate-800 mb-4">Tugas Menunggu</h3>
-                        <div class="space-y-4 flex-1">
-                            <!-- Task item -->
-                            <div class="flex items-start gap-3 p-3 bg-red-50 rounded-xl border border-red-100">
-                                <div class="bg-red-100 p-2 rounded-lg text-red-600 mt-0.5">
-                                    <i data-lucide="shopping-cart" class="w-4 h-4"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm font-medium text-slate-800">3 Pesanan Baru</p>
-                                    <p class="text-xs text-slate-500 mb-2">Menunggu konfirmasi pembayaran via WA</p>
-                                    <button class="text-xs font-semibold text-red-600 hover:text-red-700">Proses Sekarang &rarr;</button>
-                                </div>
-                            </div>
-                             <!-- Task item -->
-                             <div class="flex items-start gap-3 p-3 bg-amber-50 rounded-xl border border-amber-100">
-                                <div class="bg-amber-100 p-2 rounded-lg text-amber-600 mt-0.5">
-                                    <i data-lucide="package-search" class="w-4 h-4"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm font-medium text-slate-800">2 Produk Stok Menipis</p>
-                                    <p class="text-xs text-slate-500 mb-2">Kue Kering Nastar, Bolu Kukus</p>
-                                    <button class="text-xs font-semibold text-amber-600 hover:text-amber-700">Update Stok &rarr;</button>
-                                </div>
-                            </div>
-                        </div>
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h3 class="font-bold text-slate-800 mb-4">Grafik Penjualan</h3>
+                    <div class="h-64 w-full relative">
+                        <canvas id="salesChart"></canvas>
                     </div>
                 </div>
-
-                <!-- Recent Orders Table -->
-                <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
-                    <div class="p-5 border-b border-gray-100 flex items-center justify-between">
-                        <h3 class="font-semibold text-slate-800">Pesanan Masuk Terbaru</h3>
-                        <a href="#" class="text-sm font-medium text-emerald-600 hover:text-emerald-700">Lihat Semua</a>
-                    </div>
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-sm text-slate-600">
-                            <thead class="bg-gray-50 text-slate-500 uppercase text-xs font-semibold">
-                                <tr>
-                                    <th class="px-5 py-3">Order ID</th>
-                                    <th class="px-5 py-3">Pelanggan</th>
-                                    <th class="px-5 py-3">Tanggal</th>
-                                    <th class="px-5 py-3">Status</th>
-                                    <th class="px-5 py-3">Total</th>
-                                    <th class="px-5 py-3 text-center">Aksi</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-100">
-                                <tr class="hover:bg-gray-50 transition-colors">
-                                    <td class="px-5 py-4 font-medium text-slate-800">#ORD-003</td>
-                                    <td class="px-5 py-4">Budi Santoso</td>
-                                    <td class="px-5 py-4">26 Mei 2026, 14:30</td>
-                                    <td class="px-5 py-4">
-                                        <span class="inline-flex items-center gap-1 bg-yellow-100 text-yellow-700 px-2 py-1 rounded-md text-xs font-medium">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-yellow-500"></span> Menunggu
-                                        </span>
-                                    </td>
-                                    <td class="px-5 py-4 font-medium">Rp 150.000</td>
-                                    <td class="px-5 py-4 text-center">
-                                        <button class="inline-flex items-center justify-center gap-1.5 bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 rounded-lg text-xs font-medium transition-colors">
-                                            <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Hubungi WA
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-gray-50 transition-colors">
-                                    <td class="px-5 py-4 font-medium text-slate-800">#ORD-002</td>
-                                    <td class="px-5 py-4">Sari Indah</td>
-                                    <td class="px-5 py-4">26 Mei 2026, 09:15</td>
-                                    <td class="px-5 py-4">
-                                        <span class="inline-flex items-center gap-1 bg-blue-100 text-blue-700 px-2 py-1 rounded-md text-xs font-medium">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> Diproses
-                                        </span>
-                                    </td>
-                                    <td class="px-5 py-4 font-medium">Rp 85.000</td>
-                                    <td class="px-5 py-4 text-center">
-                                        <button class="inline-flex items-center justify-center gap-1.5 bg-green-500 hover:bg-green-600 text-white px-3 py-1.5 rounded-lg text-xs font-medium transition-colors">
-                                            <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Hubungi WA
-                                        </button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-gray-50 transition-colors">
-                                    <td class="px-5 py-4 font-medium text-slate-800">#ORD-001</td>
-                                    <td class="px-5 py-4">Andi Wijaya</td>
-                                    <td class="px-5 py-4">25 Mei 2026, 16:45</td>
-                                    <td class="px-5 py-4">
-                                        <span class="inline-flex items-center gap-1 bg-emerald-100 text-emerald-700 px-2 py-1 rounded-md text-xs font-medium">
-                                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Selesai
-                                        </span>
-                                    </td>
-                                    <td class="px-5 py-4 font-medium">Rp 320.000</td>
-                                    <td class="px-5 py-4 text-center">
-                                        <button class="inline-flex items-center justify-center gap-1.5 bg-gray-100 hover:bg-gray-200 text-slate-600 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors">
-                                            Detail
-                                        </button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                <!-- Footer -->
-                <div class="mt-8 text-center text-sm text-slate-500 pb-4">
-                    &copy; 2026 iMersWAstore. Hak Cipta Dilindungi.
-                </div>
-
             </div>
+
+            <!-- ========================================== -->
+            <!-- VIEW: MANAJEMEN USER (Hanya Admin/Agency)-->
+            <!-- ========================================== -->
+            <div id="view-users" class="view-section hidden max-w-6xl mx-auto space-y-6">
+                <div class="flex justify-between items-center bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-800">Manajemen Pengguna</h2>
+                        <p class="text-sm text-slate-500">Buat dan kelola akun toko di bawah jaringan Anda.</p>
+                    </div>
+                    <button onclick="toggleUserModal(true)" class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-sm transition-colors flex items-center gap-2">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Buat Akun Baru
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <div class="p-8 text-center text-slate-500">
+                        <div class="w-16 h-16 bg-slate-50 text-slate-300 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i data-lucide="users" class="w-8 h-8"></i>
+                        </div>
+                        <p class="font-medium">Data user akan muncul di sini (Fitur GET list user bisa ditambahkan nanti di backend).</p>
+                        <p class="text-xs mt-1">Saat ini Anda sudah bisa membuat akun baru dengan tombol di atas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- VIEW: KATALOG PRODUK -->
+            <!-- ========================================== -->
+            <div id="view-prod" class="view-section hidden max-w-6xl mx-auto space-y-6">
+                <div class="flex justify-between items-center bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-800">Katalog Produk</h2>
+                        <p class="text-sm text-slate-500">Kelola daftar produk, harga, dan stok.</p>
+                    </div>
+                    <button onclick="alert('Fitur tambah produk form popup')" class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-bold shadow-sm transition-colors flex items-center gap-2">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Tambah Produk
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-50 text-slate-500 font-semibold border-b border-slate-200">
+                            <tr>
+                                <th class="px-6 py-4">Produk</th>
+                                <th class="px-6 py-4">Harga</th>
+                                <th class="px-6 py-4">Stok</th>
+                                <th class="px-6 py-4 text-right">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100" id="productTableBody">
+                            <!-- Diisi oleh JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- VIEW: PESANAN MASUK -->
+            <!-- ========================================== -->
+            <div id="view-order" class="view-section hidden max-w-6xl mx-auto space-y-6">
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h2 class="text-xl font-bold text-slate-800 mb-1">Pesanan Masuk</h2>
+                    <p class="text-sm text-slate-500">Daftar pesanan dari Toko Online dan WhatsApp Anda.</p>
+                </div>
+
+                <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-50 text-slate-500 font-semibold border-b border-slate-200">
+                            <tr>
+                                <th class="px-6 py-4">Order ID</th>
+                                <th class="px-6 py-4">Pelanggan</th>
+                                <th class="px-6 py-4">Total</th>
+                                <th class="px-6 py-4">Status</th>
+                                <th class="px-6 py-4 text-right">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100" id="orderTableBody">
+                            <!-- Diisi oleh JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- VIEW: KASIR POS -->
+            <!-- ========================================== -->
+            <div id="view-pos" class="view-section hidden max-w-full h-full">
+                <div class="flex flex-col lg:flex-row gap-6 h-[calc(100vh-140px)]">
+                    
+                    <!-- Kiri: Grid Produk -->
+                    <div class="flex-1 bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+                        <div class="p-4 border-b border-slate-100 bg-slate-50">
+                            <input type="text" placeholder="Cari produk..." class="w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:border-emerald-500 text-sm">
+                        </div>
+                        <div class="p-4 overflow-y-auto flex-1 bg-slate-50">
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4" id="posProductGrid">
+                                <!-- Diisi oleh JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kanan: Keranjang Kasir -->
+                    <div class="w-full lg:w-96 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col h-full">
+                        <div class="p-4 border-b border-slate-100 bg-emerald-500 text-white flex justify-between items-center rounded-t-xl">
+                            <h3 class="font-bold flex items-center gap-2"><i data-lucide="shopping-cart" class="w-5 h-5"></i> Keranjang</h3>
+                            <button onclick="clearCart()" class="text-xs bg-emerald-600 hover:bg-emerald-700 px-2 py-1 rounded">Kosongkan</button>
+                        </div>
+                        
+                        <!-- List Item -->
+                        <div class="flex-1 overflow-y-auto p-4 space-y-3" id="cartItemList">
+                            <!-- Diisi JS -->
+                            <div class="text-center text-slate-400 text-sm mt-10">Keranjang masih kosong</div>
+                        </div>
+
+                        <!-- Summary & Checkout -->
+                        <div class="p-4 border-t border-slate-100 bg-slate-50 rounded-b-xl">
+                            <div class="flex justify-between items-center mb-4">
+                                <span class="text-slate-500 font-medium">Total Tagihan</span>
+                                <span class="text-2xl font-bold text-slate-800" id="cartTotal">Rp 0</span>
+                            </div>
+                            <button onclick="processCheckout()" class="w-full py-3 bg-slate-900 text-white font-bold rounded-lg hover:bg-slate-800 shadow-lg flex justify-center items-center gap-2">
+                                <i data-lucide="printer" class="w-5 h-5"></i> Proses & Bayar
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ========================================== -->
+            <!-- VIEW: PENGATURAN -->
+            <!-- ========================================== -->
+            <div id="view-set" class="view-section hidden max-w-3xl mx-auto space-y-6">
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <h2 class="text-xl font-bold text-slate-800 mb-1">Pengaturan Toko</h2>
+                    <p class="text-sm text-slate-500">Sesuaikan identitas bisnis dan konfigurasi WhatsApp Anda.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+                    <form class="space-y-5" onsubmit="event.preventDefault(); alert('Pengaturan Berhasil Disimpan!');">
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Nama Toko</label>
+                            <input type="text" value="Toko Demo Preview" class="w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:border-emerald-500 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Slug URL Toko</label>
+                            <div class="flex rounded-lg shadow-sm">
+                                <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-slate-300 bg-slate-50 text-slate-500 text-xs">toko.com/</span>
+                                <input type="text" value="toko-demo" class="flex-1 min-w-0 block w-full px-3 py-2 rounded-none rounded-r-lg border border-slate-300 focus:outline-none focus:border-emerald-500 text-sm">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Nomor WhatsApp Penerima Order</label>
+                            <input type="text" value="6281234567890" class="w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:border-emerald-500 text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-slate-700 mb-1">Pesan Auto-Reply (Sambutan WA)</label>
+                            <textarea rows="3" class="w-full px-4 py-2 border border-slate-200 rounded-lg focus:outline-none focus:border-emerald-500 text-sm">Halo Admin, saya ingin memesan produk dari toko online Anda dengan rincian sebagai berikut:</textarea>
+                        </div>
+                        <div class="pt-4">
+                            <button type="submit" class="bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-2.5 rounded-lg text-sm font-bold shadow-sm transition-colors">
+                                Simpan Pengaturan
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
         </div>
     </main>
 
+    <!-- Modal Create User (Hidden) ... -->
+    <div id="modalCreateUser" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-slate-900/50 backdrop-blur-sm" onclick="toggleUserModal(false)"></div>
+        <div class="flex items-center justify-center min-h-screen p-4 relative z-10">
+            <div class="bg-white rounded-2xl shadow-xl w-full max-w-md overflow-hidden">
+                <!-- ... Isi form sama persis dengan kode sebelumnya ... -->
+                <div class="px-6 py-4 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+                    <h3 class="font-bold text-slate-800">Buat Akun Baru</h3>
+                    <button onclick="toggleUserModal(false)" class="text-slate-400"><i data-lucide="x" class="w-5 h-5"></i></button>
+                </div>
+                <div class="p-6">
+                    <p class="text-sm text-slate-500 text-center">Fitur backend dapat dilanjutkan di lain waktu.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT UTAMA (FULL ACTIVE UI) -->
     <script>
-        // Initialize Icons
+        lucide.createIcons();
+        const formatRupiah = (angka) => new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(angka);
+
+        // Header Info
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById('headerDate').innerText = new Date().toLocaleDateString('id-ID', options);
+        document.getElementById('uiTokoName').innerText = currentUser.nama_toko;
+        document.getElementById('uiUsername').innerText = '@' + currentUser.username;
+        document.getElementById('uiAvatar').innerText = currentUser.nama_toko.charAt(0);
+        document.getElementById('welcomeName').innerText = currentUser.username;
+        document.getElementById('uiRoleBadge').innerText = currentUser.role;
+
+        // 1. RENDER MENU (DYNAMIC RBAC)
+        const navMenu = document.getElementById('navMenu');
+        let menus = '';
+        const createMenuHTML = (id, icon, text, viewId) => `
+            <button onclick="switchView('${viewId}', '${id}', '${text}')" id="menu-${id}" class="menu-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium w-full text-left transition-colors text-slate-600 hover:bg-slate-100">
+                <i data-lucide="${icon}" class="w-5 h-5"></i> ${text}
+            </button>
+        `;
+
+        menus += createMenuHTML('dash', 'layout-dashboard', 'Dashboard', 'view-dashboard');
+        if (currentUser.role === 'admin' || currentUser.role === 'agency') {
+            menus += createMenuHTML('users', 'users', 'Manajemen Pengguna', 'view-users');
+        }
+        // Menu Toko & POS
+        menus += createMenuHTML('prod', 'package', 'Katalog Produk', 'view-prod');
+        menus += createMenuHTML('order', 'shopping-cart', 'Pesanan Masuk', 'view-order');
+        menus += createMenuHTML('pos', 'calculator', 'Kasir POS', 'view-pos');
+        menus += createMenuHTML('set', 'settings', 'Pengaturan', 'view-set');
+        
+        navMenu.innerHTML = menus;
         lucide.createIcons();
 
-        // Sidebar Toggle for Mobile
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('sidebarOverlay');
+        // 2. SWITCH VIEW LOGIC
+        function switchView(viewId, menuId, titleText) {
+            document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
+            document.getElementById(viewId).classList.remove('hidden');
+            document.getElementById('pageTitle').innerText = titleText;
+            document.querySelectorAll('.menu-item').forEach(el => {
+                el.classList.remove('bg-emerald-50', 'text-emerald-600');
+                el.classList.add('text-slate-600');
+            });
+            const activeMenu = document.getElementById('menu-' + menuId);
+            if(activeMenu) {
+                activeMenu.classList.remove('text-slate-600');
+                activeMenu.classList.add('bg-emerald-50', 'text-emerald-600');
+            }
+        }
+        switchView('view-dashboard', 'dash', 'Dashboard');
 
-        function toggleSidebar() {
-            sidebar.classList.toggle('-translate-x-full');
-            overlay.classList.toggle('hidden');
+        function doLogout() {
+            localStorage.removeItem('iMersWA_User');
+            if (window.location.protocol !== 'blob:' && window.location.protocol !== 'data:' && window.self === window.top) {
+                window.location.href = 'login.html';
+            } else {
+                alert("Sesi dihapus."); window.location.reload();
+            }
         }
 
-        // Initialize Chart.js
-        document.addEventListener("DOMContentLoaded", function() {
-            const ctx = document.getElementById('salesChart').getContext('2d');
-            
-            // Gradient for chart fill
-            const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-            gradient.addColorStop(0, 'rgba(16, 185, 129, 0.2)'); // emerald-500 with opacity
-            gradient.addColorStop(1, 'rgba(16, 185, 129, 0)');
+        // ==========================================
+        // DUMMY DATA UNTUK MENGHIDUPKAN UI
+        // ==========================================
+        const products = [
+            { id: 1, name: 'Kopi Susu Gula Aren', price: 25000, stock: 45, img: 'https://placehold.co/100x100/78350f/ffffff?text=Kopi' },
+            { id: 2, name: 'Roti Bakar Keju', price: 18000, stock: 20, img: 'https://placehold.co/100x100/f59e0b/ffffff?text=Roti' },
+            { id: 3, name: 'Pisang Coklat Lumer', price: 15000, stock: 30, img: 'https://placehold.co/100x100/d97706/ffffff?text=PisCok' },
+            { id: 4, name: 'Teh Tarik Dingin', price: 12000, stock: 50, img: 'https://placehold.co/100x100/10b981/ffffff?text=Teh' }
+        ];
 
-            const salesChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'],
-                    datasets: [{
-                        label: 'Pendapatan (Rp)',
-                        data: [450000, 600000, 480000, 800000, 750000, 1200000, 950000],
-                        borderColor: '#10b981', // emerald-500
-                        backgroundColor: gradient,
-                        borderWidth: 2,
-                        pointBackgroundColor: '#ffffff',
-                        pointBorderColor: '#10b981',
-                        pointBorderWidth: 2,
-                        pointRadius: 4,
-                        pointHoverRadius: 6,
-                        fill: true,
-                        tension: 0.4 // Smooth curves
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false // Hide default legend
-                        },
-                        tooltip: {
-                            backgroundColor: '#1e293b',
-                            padding: 12,
-                            titleFont: { family: 'Inter', size: 13 },
-                            bodyFont: { family: 'Inter', size: 14, weight: 'bold' },
-                            callbacks: {
-                                label: function(context) {
-                                    let label = context.dataset.label || '';
-                                    if (label) {
-                                        label += ': ';
-                                    }
-                                    if (context.parsed.y !== null) {
-                                        label += new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(context.parsed.y);
-                                    }
-                                    return label;
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: '#f1f5f9', // slate-100
-                                drawBorder: false,
-                            },
-                            ticks: {
-                                color: '#94a3b8',
-                                font: { family: 'Inter', size: 11 },
-                                callback: function(value, index, values) {
-                                    if(value >= 1000000) return (value/1000000) + ' Jt';
-                                    if(value >= 1000) return (value/1000) + ' rb';
-                                    return value;
-                                }
-                            }
-                        },
-                        x: {
-                            grid: {
-                                display: false,
-                                drawBorder: false,
-                            },
-                            ticks: {
-                                color: '#94a3b8',
-                                font: { family: 'Inter', size: 12 }
-                            }
-                        }
-                    },
-                    interaction: {
-                        intersect: false,
-                        mode: 'index',
-                    },
-                }
+        const orders = [
+            { id: 'ORD-003', buyer: 'Budi Santoso', total: 75000, status: 'Menunggu' },
+            { id: 'ORD-002', buyer: 'Sari Indah', total: 43000, status: 'Diproses' },
+            { id: 'ORD-001', buyer: 'Andi Wijaya', total: 120000, status: 'Selesai' }
+        ];
+
+        // RENDER KATALOG PRODUK
+        const tbodyProd = document.getElementById('productTableBody');
+        products.forEach(p => {
+            tbodyProd.innerHTML += `
+                <tr class="hover:bg-slate-50">
+                    <td class="px-6 py-4 flex items-center gap-3">
+                        <img src="${p.img}" class="w-10 h-10 rounded-lg object-cover">
+                        <span class="font-medium text-slate-800">${p.name}</span>
+                    </td>
+                    <td class="px-6 py-4 font-bold text-slate-700">${formatRupiah(p.price)}</td>
+                    <td class="px-6 py-4"><span class="bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-bold">${p.stock} pcs</span></td>
+                    <td class="px-6 py-4 text-right">
+                        <button class="text-blue-500 hover:text-blue-700 text-sm font-medium mr-2">Edit</button>
+                        <button class="text-red-500 hover:text-red-700 text-sm font-medium">Hapus</button>
+                    </td>
+                </tr>
+            `;
+        });
+
+        // RENDER PESANAN MASUK
+        const tbodyOrder = document.getElementById('orderTableBody');
+        orders.forEach(o => {
+            let statusColor = o.status === 'Selesai' ? 'bg-emerald-100 text-emerald-700' : 
+                              o.status === 'Diproses' ? 'bg-blue-100 text-blue-700' : 'bg-amber-100 text-amber-700';
+            tbodyOrder.innerHTML += `
+                <tr class="hover:bg-slate-50">
+                    <td class="px-6 py-4 font-bold text-slate-800">${o.id}</td>
+                    <td class="px-6 py-4 text-slate-600">${o.buyer}</td>
+                    <td class="px-6 py-4 font-bold text-slate-700">${formatRupiah(o.total)}</td>
+                    <td class="px-6 py-4"><span class="${statusColor} px-2 py-1 rounded text-xs font-bold">${o.status}</span></td>
+                    <td class="px-6 py-4 text-right">
+                        <button class="bg-emerald-500 text-white px-3 py-1 rounded text-xs font-bold shadow-sm">Detail WA</button>
+                    </td>
+                </tr>
+            `;
+        });
+
+        // ==========================================
+        // LOGIKA KASIR POS (SANGAT AKTIF)
+        // ==========================================
+        let cart = [];
+        const posGrid = document.getElementById('posProductGrid');
+        const cartList = document.getElementById('cartItemList');
+        const cartTotalEl = document.getElementById('cartTotal');
+
+        // Render Grid POS
+        products.forEach(p => {
+            posGrid.innerHTML += `
+                <div onclick="addToCart(${p.id})" class="bg-white border border-slate-200 rounded-xl p-3 cursor-pointer hover:border-emerald-500 hover:shadow-md transition-all">
+                    <img src="${p.img}" class="w-full h-24 object-cover rounded-lg mb-2">
+                    <h4 class="font-bold text-slate-800 text-sm line-clamp-1">${p.name}</h4>
+                    <p class="text-emerald-600 font-bold text-sm">${formatRupiah(p.price)}</p>
+                </div>
+            `;
+        });
+
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const existing = cart.find(c => c.id === id);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            renderCart();
+        }
+
+        function renderCart() {
+            cartList.innerHTML = '';
+            let total = 0;
+
+            if(cart.length === 0) {
+                cartList.innerHTML = '<div class="text-center text-slate-400 text-sm mt-10">Keranjang masih kosong</div>';
+                cartTotalEl.innerText = 'Rp 0';
+                return;
+            }
+
+            cart.forEach((item, index) => {
+                const subtotal = item.price * item.qty;
+                total += subtotal;
+                cartList.innerHTML += `
+                    <div class="flex justify-between items-center bg-white p-3 rounded-lg border border-slate-100">
+                        <div class="flex-1">
+                            <h4 class="text-sm font-bold text-slate-800 line-clamp-1">${item.name}</h4>
+                            <p class="text-xs text-slate-500">${formatRupiah(item.price)} x ${item.qty}</p>
+                        </div>
+                        <div class="text-right ml-2">
+                            <p class="text-sm font-bold text-slate-800 mb-1">${formatRupiah(subtotal)}</p>
+                            <button onclick="removeCart(${index})" class="text-xs text-red-500 hover:text-red-700">Hapus</button>
+                        </div>
+                    </div>
+                `;
             });
+            cartTotalEl.innerText = formatRupiah(total);
+        }
+
+        function removeCart(index) {
+            cart.splice(index, 1);
+            renderCart();
+        }
+
+        function clearCart() {
+            cart = [];
+            renderCart();
+        }
+
+        function processCheckout() {
+            if(cart.length === 0) return alert("Keranjang kosong!");
+            alert("✅ Pembayaran Berhasil Diproses! \n\n(Struk akan tercetak dan data otomatis masuk ke Laporan Penjualan)");
+            clearCart();
+        }
+
+
+        // CHART.JS INITIALIZATION
+        const ctx = document.getElementById('salesChart').getContext('2d');
+        const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+        gradient.addColorStop(0, 'rgba(16, 185, 129, 0.2)');
+        gradient.addColorStop(1, 'rgba(16, 185, 129, 0)');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'],
+                datasets: [{
+                    label: 'Pendapatan',
+                    data: [450, 600, 480, 800, 750, 1200, 950],
+                    borderColor: '#10b981', backgroundColor: gradient,
+                    borderWidth: 2, fill: true, tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true, maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true, grid: { borderDash: [2, 4], color: '#f1f5f9' } },
+                    x: { grid: { display: false } }
+                }
+            }
         });
     </script>
 </body>
