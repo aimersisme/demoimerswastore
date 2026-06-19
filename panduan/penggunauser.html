@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="glassmorphism">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panduan Lengkap Dashboard Pengguna (iMersWAstore)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&family=JetBrains+Mono:wght@4400;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-tr from-[#0f172a] via-[#1e1b4b] to-[#111827] text-white antialiased">
+    <!-- Ambient glowing blobs for glassmorphism theme -->
+    <div class="absolute inset-0 z-0 overflow-hidden">
+        <div class="absolute w-72 h-72 rounded-full bg-indigo-500/30 blur-3xl" style="top: 10%; left: 15%;"></div>
+        <div class="absolute w-96 h-96 rounded-full bg-pink-500/30 blur-3xl" style="bottom: 20%; right: 10%;"></div>
+        <div class="absolute w-64 h-64 rounded-emerald-500/30 blur-3xl" style="top: 40%; left: 40%;"></div>
+    </div>
+
+    <main class="relative z-10">
+        <!-- Auto-detect: SCANNED | Reason: No selectable text layer, OCR used to rebuild -->
+        <section class="imers-page min-h-fit py-6 md:py-8 border-b border-slate-700 last:border-b-0 flex flex-col justify-start gap-4 md:gap-6" data-block="page">
+            <div class="imers-container mx-auto max-w-[960px] w-full px-6 sm:px-10" role="document">
+                <header class="imers-block mb-6 md:mb-8" data-block="header">
+                    <h1 class="text-4xl sm:text-5xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-[#035e41] to-[#14db99] leading-tight mb-3">
+                        Panduan Lengkap Dashboard Pengguna <br>(iMersWAstore)
+                    </h1>
+                    <p class="text-slate-300 text-lg leading-relaxed">
+                        Selamat datang di iMersWAstore! Panduan ini disusun khusus untuk membantu Anda
+                        mengelola operasional toko online dan kasir fisik (POS) Anda dengan mudah dan cepat.
+                    </p>
+                </header>
+
+                <section class="imers-block imers-section mb-6" data-block="section">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#035e41] mb-4">
+                        1. Akses & Cara Login
+                    </h2>
+                    <p class="text-slate-300 mb-4">
+                        Ada dua cara untuk masuk ke panel manajemen toko Anda:
+                    </p>
+                    <ol class="list-decimal list-outside ml-6 space-y-3 text-slate-300">
+                        <li>
+                            <strong class="text-[#14db99]">Cara Standar:</strong> Akses URL <code class="font-mono bg-white/10 px-1 py-0.5 rounded text-sm text-yellow-200">domainanda.com/login.html</code> (atau link yang
+                            diberikan oleh penyedia layanan Anda), lalu masukkan <strong class="text-[#14db99]">Username</strong> dan <strong class="text-[#14db99]">Password</strong>
+                            Anda.
+                        </li>
+                        <li>
+                            <strong class="text-[#14db99]">Cara Rahasia (Secret Tap Login):</strong> Buka halaman etalase toko online Anda. Gulir ke
+                            bagian paling bawah (Footer). Ketuk teks kecil "<em class="text-yellow-200">Powered by</em>" sebanyak 5 kali
+                            secara cepat. Masukkan PIN Rahasia Anda untuk langsung masuk ke Dashboard.
+                            (Fitur ini harus Anda aktifkan terlebih dahulu di menu Pengaturan Toko).
+                        </li>
+                    </ol>
+                </section>
+
+                <section class="imers-block imers-section mb-6" data-block="section">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#035e41] mb-4">
+                        2. Mengenal Dashboard (Ringkasan Bisnis)
+                    </h2>
+                    <p class="text-slate-300 mb-4">
+                        Saat Anda login, Anda akan langsung melihat halaman Dashboard. Halaman ini adalah
+                        pusat komando bisnis Anda:
+                    </p>
+                    <ul class="list-none space-y-3 text-slate-300">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 mt-1 shrink-0 text-[#14db99]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="flex-1">
+                                <strong class="text-[#14db99]">Statistik Cepat:</strong> Memantau total Pendapatan (dari order yang selesai), jumlah
+                                pesanan baru, pesanan pending, dan total produk di katalog Anda.
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 mt-1 shrink-0 text-[#14db99]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="flex-1">
+                                <strong class="text-[#14db99]">Grafik Penjualan:</strong> Melihat tren omset selama 7 hari terakhir.
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 mt-1 shrink-0 text-[#14db99]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="flex-1">
+                                <strong class="text-[#14db99]">Produk Terlaris:</strong> Mengetahui produk apa saja yang paling disukai oleh pelanggan
+                                Anda.
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 mt-1 shrink-0 text-[#14db99]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="flex-1">
+                                <strong class="text-[#14db99]">Banner Upgrade:</strong> Jika Anda menggunakan paket <em class="text-yellow-200">Starter/Trial</em>, Anda dapat mengklik
+                                tombol "<strong class="text-yellow-200">Upgrade Sekarang</strong>" di bagian atas untuk memperpanjang masa aktif atau
+                                membuka fitur premium.
+                            </span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="imers-block imers-section" data-block="section">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#035e41] mb-4">
+                        3. Mengelola Etalase Toko
+                    </h2>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-[#14db99] mb-3">
+                        A. Membuat Kategori Produk
+                    </h3>
+                    <p class="text-slate-300 mb-4">
+                        Kelompokkan produk agar pembeli mudah mencari barang:
+                    </p>
+                    <ol class="list-decimal list-outside ml-6 space-y-3 text-slate-300">
+                        <li>Masuk ke menu <strong class="text-[#14db99]">Kategori Produk</strong>.</li>
+                        <li>Klik tombol <strong class="text-[#14db99]">Tambah Kategori</strong>.</li>
+                        <li>Isi <strong class="text-[#14db99]">Nama Kategori</strong> (Misal: "Makanan", "Minuman", "Pakaian Pria").</li>
+                        <li>Isi "<strong class="text-[#14db99]">Urutan</strong>" (0, 1, 2) untuk menentukan posisi kategori di toko Anda.</li>
+                    </ol>
+                </section>
+            </div>
+        </section>
+
+        <section class="imers-page min-h-fit py-6 md:py-8 border-b border-slate-700 last:border-b-0 flex flex-col justify-start gap-4 md:gap-6" data-block="page">
+            <div class="imers-container mx-auto max-w-[960px] w-full px-6 sm:px-10" role="document">
+                <section class="imers-block imers-section mb-6" data-block="section">
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-[#14db99] mb-3">
+                        B. Menambah Katalog Produk
+                    </h3>
+                    <p class="text-slate-300 mb-4">
+                        Pajang barang jualan Anda di etalase:
+                    </p>
+                    <ol class="list-decimal list-outside ml-6 space-y-3 text-slate-300">
+                        <li>Masuk ke menu <strong class="text-[#14db99]">Katalog Produk</strong>, klik <strong class="text-[#14db99]">Tambah Produk</strong>.</li>
+                        <li>
+                            Masukkan <strong class="text-[#14db99]">Nama Produk, Kategori, Harga Utama,</strong> dan <strong class="text-[#14db99]">Stok</strong>. (Kosongkan kolom
+                            stok jika barang Anda selalu tersedia/unlimited).
+                        </li>
+                        <li>
+                            Pilih <strong class="text-[#14db99]">Satuan</strong> (Pcs, Box, Porsi, dll) dan tambahkan <strong class="text-[#14db99]">Badge Promo</strong> (Misal: Terlaris,
+                            Diskon 50%) agar lebih menarik.
+                        </li>
+                        <li>
+                            <strong class="text-[#14db99]">Varian Produk (Warna/Ukuran):</strong> Jika produk Anda memiliki variasi (Contoh: Kemeja
+                            Merah Size XL), klik tombol <strong class="text-[#14db99]">Tambah Varian</strong>. Anda bisa menentukan harga dan stok
+                            yang berbeda untuk masing-masing varian!
+                        </li>
+                        <li>Klik <strong class="text-[#14db99]">Simpan Produk</strong>.</li>
+                    </ol>
+                </section>
+
+                <section class="imers-block imers-section mb-6" data-block="section">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#035e41] mb-4">
+                        4. Fitur Marketing & Pengiriman
+                    </h2>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-[#14db99] mb-3">
+                        A. Membuat Kupon Diskon
+                    </h3>
+                    <p class="text-slate-300 mb-4">
+                        Tarik perhatian pelanggan dengan kode promo:
+                    </p>
+                    <ol class="list-decimal list-outside ml-6 space-y-3 text-slate-300">
+                        <li>Masuk ke menu <strong class="text-[#14db99]">Kupon Diskon &gt; Buat Kupon</strong>.</li>
+                        <li>Ketik kode unik (Contoh: <code class="font-mono bg-white/10 px-1 py-0.5 rounded text-sm text-yellow-200">MANTAP10</code>).</li>
+                        <li>Pilih tipe diskon: <strong class="text-[#14db99]">Persen (%)</strong> atau <strong class="text-[#14db99]">Nominal Rupiah (Rp)</strong>.</li>
+                        <li>
+                            Isi batas <strong class="text-[#14db99]">Minimal Belanja</strong>. Diskon otomatis berlaku saat pembeli mencapai nominal
+                            belanja tersebut.
+                        </li>
+                    </ol>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-[#14db99] mb-3 mt-6">
+                        B. Mengatur Tarif Pengiriman (Ongkir Manual)
+                    </h3>
+                    <ol class="list-decimal list-outside ml-6 space-y-3 text-slate-300">
+                        <li>Buka menu <strong class="text-[#14db99]">Ongkos Kirim</strong>.</li>
+                        <li>
+                            Klik <strong class="text-[#14db99]">Tambah Area</strong>, lalu masukkan nama wilayah (Contoh: "Kecamatan A" atau "Jasa
+                            Kurir Instan").
+                        </li>
+                        <li>
+                            Masukkan nominal tarif (Contoh: 15000). Pembeli wajib memilih area ini saat proses
+                            <em class="text-yellow-200">checkout</em>.
+                        </li>
+                    </ol>
+                </section>
+
+                <section class="imers-block imers-section" data-block="section">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#035e41] mb-4">
+                        5. Sistem Kasir POS (Jualan Offline)
+                    </h2>
+                    <p class="text-slate-300 mb-4">
+                        Fitur ini digunakan saat Anda melayani pembeli yang datang langsung ke toko fisik/warung
+                        Anda.
+                    </p>
+                    <ol class="list-decimal list-outside ml-6 space-y-3 text-slate-300">
+                        <li>Buka menu <strong class="text-[#14db99]">Kasir POS</strong>.</li>
+                        <li>
+                            Cari nama produk, lalu klik produk tersebut untuk menambahkannya ke <strong class="text-[#14db99]">Keranjang
+                            Kasir</strong>.
+                        </li>
+                        <li>Atur jumlah beli (+/-).</li>
+                        <li>Klik <strong class="text-[#14db99]">Lanjut Pembayaran</strong>.</li>
+                        <li>
+                            Masukkan <strong class="text-[#14db99]">Uang Tunai</strong> yang dibayarkan. Sistem akan langsung menghitung <strong class="text-[#14db99]">Uang
+                            Kembalian</strong>.
+                        </li>
+                    </ol>
+                </section>
+            </div>
+        </section>
+
+        <section class="imers-page min-h-fit py-6 md:py-8 border-b border-slate-700 last:border-b-0 flex flex-col justify-start gap-4 md:gap-6" data-block="page">
+            <div class="imers-container mx-auto max-w-[960px] w-full px-6 sm:px-10" role="document">
+                <ol class="list-decimal list-outside ml-6 space-y-3 text-slate-300">
+                    <li value="6">
+                        Klik <strong class="text-[#14db99]">Konfirmasi &amp; Cetak</strong>. Stok barang akan langsung terpotong, penjualan tercatat
+                        di laporan, dan sistem akan memunculkan perintah untuk mencetak <strong class="text-[#14db99]">Struk Printer
+                        Thermal (58mm)</strong>.
+                    </li>
+                </ol>
+
+                <section class="imers-block imers-section mb-6" data-block="section">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#035e41] mb-4">
+                        6. Mengelola Pesanan Masuk
+                    </h2>
+                    <p class="text-slate-300 mb-4">
+                        Pantau semua order dari Toko Online (WhatsApp) dan Kasir POS di menu <strong class="text-[#14db99]">Pesanan Masuk</strong>.
+                    </p>
+                    <ul class="list-none space-y-3 text-slate-300">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 mt-1 shrink-0 text-[#14db99]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="flex-1">
+                                Pesanan yang baru masuk akan berwarna <strong class="text-yellow-200">Kuning (Baru/Pending)</strong>.
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 mt-1 shrink-0 text-[#14db99]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="flex-1">
+                                Jika pembeli sudah mentransfer uang atau barang sudah dikirim, klik <strong class="text-[#14db99]">Tandai
+                                Selesai</strong>. Pendapatan dari transaksi tersebut akan otomatis ditambahkan ke total
+                                omset Anda di Dashboard.
+                            </span>
+                        </li>
+                    </ul>
+                </section>
+
+                <section class="imers-block imers-section" data-block="section">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#035e41] mb-4">
+                        7. Pengaturan Toko &amp; Bot WhatsApp
+                    </h2>
+                    <p class="text-slate-300 mb-4">
+                        Pusat pengaturan identitas bisnis dan otomatisasi pesan Anda. Buka menu <strong class="text-[#14db99]">Pengaturan
+                        Toko</strong>:
+                    </p>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-[#14db99] mb-3">
+                        A. Profil &amp; Tampilan Toko
+                    </h3>
+                    <ul class="list-none space-y-3 text-slate-300">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 mt-1 shrink-0 text-[#14db99]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="flex-1">
+                                Ganti <strong class="text-[#14db99]">Nama Toko, URL Logo</strong>, dan <strong class="text-[#14db99]">Nomor WhatsApp</strong> tujuan order (Harus diawali
+                                dengan 62, contoh: <code class="font-mono bg-white/10 px-1 py-0.5 rounded text-sm text-yellow-200">628123...</code>).
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 mt-1 shrink-0 text-[#14db99]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="flex-1">
+                                Ubah <strong class="text-[#14db99]">Warna Tema</strong> dan tambahkan <strong class="text-[#14db99]">Banner Slider</strong> agar toko Anda terlihat lebih
+                                profesional.
+                            </span>
+                        </li>
+                    </ul>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-[#14db99] mb-3 mt-6">
+                        B. Integrasi WA Gateway (Bot Notifikasi)
+                    </h3>
+                    <p class="text-slate-300 mb-4">
+                        Agar sistem bisa mengirim struk otomatis ke HP pelanggan:
+                    </p>
+                    <ol class="list-decimal list-outside ml-6 space-y-3 text-slate-300">
+                        <li>Pilih <strong class="text-[#14db99]">Provider</strong> yang Anda gunakan (Fonnte / WAplus / StarSender / Xsender).</li>
+                        <li>Masukkan <strong class="text-[#14db99]">API Token</strong> dan <strong class="text-[#14db99]">Nomor Sender</strong> (Nomor WA pengirim Anda).</li>
+                    </ol>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-[#14db99] mb-3 mt-6">
+                        C. Copywriting Template (Isi Pesan WA)
+                    </h3>
+                    <p class="text-slate-300 mb-4">
+                        Anda bisa mengatur sendiri kata-kata yang akan dikirim oleh Bot WhatsApp. Gunakan kode
+                        seperti <code class="font-mono bg-white/10 px-1 py-0.5 rounded text-sm text-yellow-200">[NAMA_PEMBELI]</code>, <code class="font-mono bg-white/10 px-1 py-0.5 rounded text-sm text-yellow-200">[ORDER_ID]</code>, <code class="font-mono bg-white/10 px-1 py-0.5 rounded text-sm text-yellow-200">[GRAND_TOTAL]</code>, dan <code class="font-mono bg-white/10 px-1 py-0.5 rounded text-sm text-yellow-200">[RINCIAN_ORDER]</code>.
+                        Sistem akan mengubah kode tersebut menjadi data tagihan asli secara otomatis!
+                    </p>
+                    <h3 class="text-2xl sm:text-3xl font-semibold text-[#14db99] mb-3 mt-6">
+                        D. Keamanan &amp; Legalitas
+                    </h3>
+                    <ul class="list-none space-y-3 text-slate-300">
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 mt-1 shrink-0 text-[#14db99]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="flex-1">
+                                <strong class="text-[#14db99]">Secret Tap Login:</strong> Aktifkan fitur ini, atur <strong class="text-[#14db99]">Jumlah Ketukan</strong>, dan buat <strong class="text-[#14db99]">PIN Rahasia</strong>
+                                untuk menyembunyikan link login dari publik.
+                            </span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-5 h-5 mr-2 mt-1 shrink-0 text-[#14db99]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            <span class="flex-1">
+                                <strong class="text-[#14db99]">Halaman Legal:</strong> Aktifkan <strong class="text-[#14db99]">Syarat &amp; Ketentuan</strong> serta <strong class="text-[#14db99]">Kebijakan Privasi</strong> untuk
+                                meningkatkan kepercayaan pelanggan. Link akan muncul di bagian bawah website
+                                toko Anda.
+                            </span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </section>
+
+        <section class="imers-page min-h-fit py-6 md:py-8 border-b border-slate-700 last:border-b-0 flex flex-col justify-start gap-4 md:gap-6" data-block="page">
+            <div class="imers-container mx-auto max-w-[960px] w-full px-6 sm:px-10" role="document">
+                <section class="imers-block imers-section mb-6" data-block="section">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-[#035e41] mb-4">
+                        8. Meningkatkan Paket Langganan (Upgrade)
+                    </h2>
+                    <p class="text-slate-300 mb-4">
+                        Jika Anda menggunakan paket Trial/Starter dan ingin membuka fitur premium (seperti POS
+                        Kasir &amp; Notifikasi WA):
+                    </p>
+                    <ol class="list-decimal list-outside ml-6 space-y-3 text-slate-300">
+                        <li>Buka menu <strong class="text-[#14db99]">Dashboard</strong>.</li>
+                        <li>Klik tombol <strong class="text-[#14db99]">Upgrade Sekarang</strong> pada banner di bagian atas.</li>
+                        <li>Pilih paket yang Anda inginkan (Misal: "<em class="text-yellow-200">Lifetime</em>").</li>
+                        <li>Transfer sesuai nominal ke rekening Admin yang tertera atau scan kode QRIS.</li>
+                        <li>
+                            Klik <strong class="text-[#14db99]">Konfirmasi via WhatsApp</strong> untuk mengirim bukti pembayaran ke Admin.
+                        </li>
+                    </ol>
+                    <p class="text-slate-300 mt-6 leading-relaxed">
+                        Selamat berjualan! Maksimalkan fitur iMersWAstore untuk meningkatkan profit bisnis Anda
+                        setiap harinya.
+                    </p>
+                </section>
+
+                <footer class="imers-block mt-8 pt-6 border-t border-slate-700 text-center text-slate-400 text-sm" data-block="footer">
+                    <p>
+                        Developed by <span class="font-semibold text-[#14db99]">Terry Katar</span> | <a href="https://imersnesia.com" class="text-yellow-200 hover:text-[#14db99] transition-colors duration-200" target="_blank">iMersnesia.com</a>
+                    </p>
+                </footer>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
