@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="cyberpunk" class="bg-[#09090b] text-slate-100 font-sans selection:bg-[#d946ef] selection:text-black">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panduan Lengkap Penggunaan Dashboard Admin (iMersWAstore)</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            serif: ['"Playfair Display"', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* Custom Glow and Cyberpunk accents */
+    .cyber-glow-cyan {
+      text-shadow: 0 0 8px rgba(6, 182, 212, 0.6);
+    }
+    .cyber-glow-magenta {
+      text-shadow: 0 0 8px rgba(217, 70, 239, 0.6);
+    }
+    .imers-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 1rem;
+      height: 1rem;
+      background-color: #d946ef;
+      clip-path: polygon(100% 0, 0 100%, 100% 100%);
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#09090b] text-slate-100 overflow-x-hidden">
+
+  <!-- PAGE 1 -->
+  <section class="break-after-page py-8 sm:py-12 flex flex-col gap-6 sm:gap-8 border-b border-zinc-800" data-block="page">
+    <div class="imers-container mx-auto max-w-[960px] w-full px-6 sm:px-12" role="document" aria-label="Page 1">
+      <!-- Auto-detect: DIGITAL | High-quality digital document structure recreated -->
+      
+      <header class="imers-block mb-8" data-block="header">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="imers-badge bg-[#d946ef] text-black font-mono font-bold uppercase tracking-widest px-2.5 py-1 text-[10px]">SYSTEM MANUAL v1.0</span>
+          <div class="h-px flex-1 bg-gradient-to-r from-[#d946ef] to-transparent"></div>
+        </div>
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-none bg-black border-2 border-[#d946ef] flex items-center justify-center shrink-0 shadow-[0_0_10px_rgba(217,70,239,0.3)]">
+            <svg class="w-6 h-6 text-[#d946ef]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+            </svg>
+          </div>
+          <div>
+            <h1 class="text-2xl sm:text-4xl font-mono font-bold text-[#06b6d4] uppercase tracking-wider cyber-glow-cyan leading-tight">
+              Panduan Lengkap Penggunaan Dashboard Admin (iMersWAstore)
+            </h1>
+          </div>
+        </div>
+      </header>
+
+      <main class="imers-block flex flex-col gap-8" data-block="main">
+        <aside class="imers-block imers-callout bg-black border border-zinc-800 p-5 rounded-none font-mono text-xs sm:text-sm text-slate-300 leading-relaxed relative overflow-hidden" data-block="callout">
+          <div class="absolute top-0 left-0 w-1 h-full bg-[#d946ef]"></div>
+          <p>
+            Selamat datang di <strong class="text-[#d946ef]">iMersWAstore!</strong> Dokumen ini adalah panduan komprehensif dari A-Z untuk membantu Anda (Pemilik Toko/Admin) menguasai seluruh fitur sistem. Mulai dari mengelola katalog, memproses pesanan, menggunakan Kasir POS, hingga mengintegrasikan WhatsApp Gateway.
+          </p>
+        </aside>
+
+        <!-- SECTION 1 -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <div class="flex items-center gap-2">
+            <span class="text-[#d946ef] font-mono text-lg font-bold">01//</span>
+            <h2 class="text-xl font-mono uppercase font-bold text-[#06b6d4] tracking-wide">Akses & Cara Login</h2>
+          </div>
+          <p class="text-sm text-slate-300 font-mono">Sistem iMersWAstore menyediakan dua cara login yang sangat fleksibel:</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="imers-block imers-card bg-black border-2 border-[#06b6d4] shadow-[0_0_15px_rgba(6,182,212,0.15)] p-6 rounded-none relative text-slate-100 font-mono text-xs leading-relaxed" data-block="card">
+              <div class="imers-badge bg-[#06b6d4] text-black font-bold uppercase tracking-widest px-2 py-0.5 text-[9px] mb-3 inline-block">METODE STANDAR</div>
+              <h3 class="text-sm font-bold text-white mb-2">Cara Standar (Halaman Login)</h3>
+              <p class="mb-3">Akses URL resmi berikut untuk masuk:</p>
+              <div class="bg-zinc-950 p-2 border border-zinc-800 text-[#06b6d4] mb-3 break-all font-mono text-center">
+                domainanda.com/login.html
+              </div>
+              <p>Masukkan <strong class="text-[#d946ef]">Username</strong> dan <strong class="text-[#d946ef]">Password</strong> Anda, lalu klik <span class="text-[#06b6d4]">"Masuk Sekarang"</span>.</p>
+            </div>
+
+            <div class="imers-block imers-card bg-black border-2 border-[#d946ef] shadow-[0_0_15px_rgba(217,70,239,0.15)] p-6 rounded-none relative text-slate-100 font-mono text-xs leading-relaxed" data-block="card">
+              <div class="imers-badge bg-[#d946ef] text-black font-bold uppercase tracking-widest px-2 py-0.5 text-[9px] mb-3 inline-block">METODE RAHASIA</div>
+              <h3 class="text-sm font-bold text-white mb-2">Cara Rahasia (Secret Tap Login)</h3>
+              <p class="mb-2">Anda tidak perlu mencari link login. Buka halaman depan toko online Anda (Storefront), gulir ke bagian paling bawah (Footer).</p>
+              <ul class="space-y-1 list-disc list-inside text-zinc-300 mb-2">
+                <li>Temukan teks kecil <span class="text-[#06b6d4]">"Powered by"</span>.</li>
+                <li>Ketuk teks tersebut sebanyak <strong class="text-[#d946ef]">5 kali</strong> secara cepat.</li>
+                <li>Form PIN Rahasia akan muncul.</li>
+                <li>Masukkan PIN Anda untuk langsung masuk!</li>
+              </ul>
+              <div class="p-2 bg-zinc-900 border border-zinc-800 text-[10px] text-zinc-400 italic mt-2">
+                Catatan: Fitur ini harus diaktifkan dulu di menu Pengaturan Toko.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section class="imers-block imers-section flex flex-col gap-4 mt-4" data-block="section">
+          <div class="flex items-center gap-2">
+            <span class="text-[#d946ef] font-mono text-lg font-bold">02//</span>
+            <h2 class="text-xl font-mono uppercase font-bold text-[#06b6d4] tracking-wide">Mengenal Halaman Dashboard (Beranda)</h2>
+          </div>
+          <p class="text-sm text-slate-300 font-mono">Saat berhasil login, Anda akan disambut oleh halaman Dashboard utama yang berisi ringkasan kesehatan bisnis Anda:</p>
+          
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-black border border-zinc-800 p-4 font-mono text-xs flex gap-3 items-start">
+              <div class="w-2 h-2 mt-1.5 bg-[#06b6d4] shrink-0"></div>
+              <div>
+                <h4 class="text-white font-bold mb-1 uppercase tracking-wider text-[#06b6d4]">Statistik Cepat</h4>
+                <p class="text-zinc-400 leading-relaxed">Menampilkan total pendapatan (omset dari order selesai), jumlah order masuk, order pending, dan total produk yang Anda miliki.</p>
+              </div>
+            </div>
+            <div class="bg-black border border-zinc-800 p-4 font-mono text-xs flex gap-3 items-start">
+              <div class="w-2 h-2 mt-1.5 bg-[#d946ef] shrink-0"></div>
+              <div>
+                <h4 class="text-white font-bold mb-1 uppercase tracking-wider text-[#d946ef]">Grafik Pendapatan</h4>
+                <p class="text-zinc-400 leading-relaxed">Memantau tren penjualan Anda selama seminggu ke belakang (7 Hari Terakhir).</p>
+              </div>
+            </div>
+            <div class="bg-black border border-zinc-800 p-4 font-mono text-xs flex gap-3 items-start">
+              <div class="w-2 h-2 mt-1.5 bg-yellow-400 shrink-0"></div>
+              <div>
+                <h4 class="text-white font-bold mb-1 uppercase tracking-wider text-yellow-400">Produk Terlaris</h4>
+                <p class="text-zinc-400 leading-relaxed">Grafik pie (lingkaran) yang menunjukkan 5 produk paling laris dibeli oleh pelanggan.</p>
+              </div>
+            </div>
+            <div class="bg-black border border-zinc-800 p-4 font-mono text-xs flex gap-3 items-start">
+              <div class="w-2 h-2 mt-1.5 bg-emerald-400 shrink-0"></div>
+              <div>
+                <h4 class="text-white font-bold mb-1 uppercase tracking-wider text-emerald-400">Banner Upgrade</h4>
+                <p class="text-zinc-400 leading-relaxed">(Khusus pengguna gratis/trial) Tombol untuk melakukan langganan (Upgrade Akun) guna membuka batas fitur.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 3 (PART 1) -->
+        <section class="imers-block imers-section flex flex-col gap-4 mt-4" data-block="section">
+          <div class="flex items-center gap-2">
+            <span class="text-[#d946ef] font-mono text-lg font-bold">03//</span>
+            <h2 class="text-xl font-mono uppercase font-bold text-[#06b6d4] tracking-wide">Menu Kategori Produk</h2>
+          </div>
+          <p class="text-sm text-slate-300 font-mono">Sebelum memasukkan produk, buatlah wadahnya (Kategori) terlebih dahulu agar toko terlihat rapi.</p>
+          
+          <div class="imers-block imers-card bg-black border-2 border-[#06b6d4] shadow-[0_0_15px_rgba(6,182,212,0.15)] p-6 rounded-none relative text-slate-100 font-mono text-xs leading-relaxed" data-block="card">
+            <h4 class="text-sm font-bold text-white mb-2 flex items-center gap-2">
+              <span class="w-1.5 h-3 bg-[#d946ef]"></span>
+              Langkah Pembuatan Kategori
+            </h4>
+            <p class="mb-2"><strong class="text-[#06b6d4]">Cara Buat:</strong> Klik tombol <span class="text-yellow-400">"Tambah Kategori"</span>. Masukkan Nama Kategori pilihan Anda.</p>
+            <div class="p-2 bg-zinc-950 border border-zinc-800 text-[11px] text-[#06b6d4] inline-block font-mono">
+              Contoh: &quot;Minuman Dingin&quot;
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="imers-block mt-8 pt-4 border-t border-zinc-800 flex justify-between items-center text-[10px] font-mono text-zinc-500" data-block="footer">
+        <span>DOC ID: IMERS-MANUAL-PAGE-1</span>
+        <span>Halaman 1 dari 5</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- PAGE 2 -->
+  <section class="break-after-page py-8 sm:py-12 flex flex-col gap-6 sm:gap-8 border-b border-zinc-800" data-block="page">
+    <div class="imers-container mx-auto max-w-[960px] w-full px-6 sm:px-12" role="document" aria-label="Page 2">
+      <header class="imers-block mb-4" data-block="header">
+        <div class="flex justify-between items-center text-[10px] font-mono text-zinc-500 mb-2">
+          <span>iMersWAstore Dashboard Guide</span>
+          <span>Halaman 2</span>
+        </div>
+        <div class="h-[2px] bg-gradient-to-r from-[#06b6d4] to-transparent"></div>
+      </header>
+
+      <main class="imers-block flex flex-col gap-8" data-block="main">
+        <!-- SECTION 3 CONTINUED -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <h3 class="text-sm font-mono font-bold text-zinc-400 uppercase tracking-widest">[Lanjutan] Menu Kategori Produk</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div class="bg-zinc-950 border border-zinc-800 p-4 font-mono text-xs">
+              <div class="text-[#d946ef] font-bold mb-1">● Urutan Kategori</div>
+              <p class="text-zinc-300">Isi angka urutan tampil (<code class="text-yellow-400">0, 1, 2, dst</code>) untuk menentukan kategori mana yang muncul paling kiri di toko.</p>
+            </div>
+            <div class="bg-zinc-950 border border-zinc-800 p-4 font-mono text-xs">
+              <div class="text-[#06b6d4] font-bold mb-1">● Status Tampil</div>
+              <p class="text-zinc-300">Anda bisa mematikan (<code class="text-[#d946ef]">Hidden</code>) kategori jika stok barangnya sedang kosong tanpa harus menghapusnya.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 4 -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <div class="flex items-center gap-2">
+            <span class="text-[#d946ef] font-mono text-lg font-bold">04//</span>
+            <h2 class="text-xl font-mono uppercase font-bold text-[#06b6d4] tracking-wide">Menu Katalog Produk</h2>
+          </div>
+          <p class="text-sm text-slate-300 font-mono">Di sinilah Anda memajang barang jualan Anda. Gunakan opsi di bawah ini untuk optimalisasi:</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="border border-zinc-800 bg-black p-5 font-mono text-xs flex flex-col gap-2">
+              <div class="flex items-center gap-2 text-[#d946ef] font-bold">
+                <span class="w-1.5 h-3 bg-[#d946ef]"></span>
+                Tambah Produk
+              </div>
+              <p class="text-zinc-300">Klik tombol <strong class="text-white">"Tambah Produk"</strong> untuk memulai penginputan inventori.</p>
+            </div>
+
+            <div class="border border-zinc-800 bg-black p-5 font-mono text-xs flex flex-col gap-2">
+              <div class="flex items-center gap-2 text-[#06b6d4] font-bold">
+                <span class="w-1.5 h-3 bg-[#06b6d4]"></span>
+                Data Dasar
+              </div>
+              <p class="text-zinc-300">Isi Nama, Kategori (ambil dari dropdown), Harga, dan Stok Utama. Jika stok diisi kosong, maka dianggap <strong class="text-[#d946ef]">Unlimited</strong> (Tidak terbatas).</p>
+            </div>
+
+            <div class="border border-zinc-800 bg-black p-5 font-mono text-xs flex flex-col gap-2">
+              <div class="flex items-center gap-2 text-[#06b6d4] font-bold">
+                <span class="w-1.5 h-3 bg-[#06b6d4]"></span>
+                Satuan &amp; Badge
+              </div>
+              <p class="text-zinc-300">Pilih satuan (Pcs, Box, Porsi, dll) dan tambahkan Badge (contoh: <span class="text-yellow-400">"Promo", "Terlaris"</span>) agar produk menarik perhatian.</p>
+            </div>
+
+            <div class="border border-zinc-800 bg-black p-5 font-mono text-xs flex flex-col gap-2">
+              <div class="flex items-center gap-2 text-[#d946ef] font-bold">
+                <span class="w-1.5 h-3 bg-[#d946ef]"></span>
+                Gambar &amp; Deskripsi
+              </div>
+              <p class="text-zinc-300">Masukkan link URL gambar (contoh dari Postimage atau Imgur) dan tulis deskripsi singkat produk Anda.</p>
+            </div>
+          </div>
+
+          <!-- SUB SECTION VARIANT -->
+          <div class="imers-block imers-card bg-black border-2 border-[#d946ef] shadow-[0_0_15px_rgba(217,70,239,0.15)] p-6 rounded-none relative text-slate-100 font-mono text-xs leading-relaxed" data-block="card">
+            <h4 class="text-sm font-bold text-white mb-2 uppercase tracking-wide text-[#d946ef]">Fitur Varian Produk</h4>
+            <p class="mb-3">Jika jualan baju (beda ukuran/warna) atau makanan (beda rasa), klik <strong class="text-white">Tambah Varian</strong>:</p>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-[11px]">
+              <div class="bg-zinc-950 p-3 border border-zinc-800">
+                <div class="text-cyan-400 font-bold mb-1">Opsi Fleksibel</div>
+                Anda bisa membuat varian (Misal: <span class="text-yellow-400">"Warna: Merah"</span>, <span class="text-yellow-400">"Size: XL"</span>).
+              </div>
+              <div class="bg-zinc-950 p-3 border border-zinc-800">
+                <div class="text-cyan-400 font-bold mb-1">Harga Khusus</div>
+                Varian bisa punya harga lebih mahal/murah dari harga utama.
+              </div>
+              <div class="bg-zinc-950 p-3 border border-zinc-800">
+                <div class="text-cyan-400 font-bold mb-1">Stok Terpisah</div>
+                Tiap varian punya stoknya sendiri. Sistem otomatis memotong stok varian yang dibeli.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 5 -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <div class="flex items-center gap-2">
+            <span class="text-[#d946ef] font-mono text-lg font-bold">05//</span>
+            <h2 class="text-xl font-mono uppercase font-bold text-[#06b6d4] tracking-wide">Menu Kupon Diskon</h2>
+          </div>
+          <p class="text-sm text-slate-300 font-mono">Tarik perhatian pelanggan Anda dengan menyebarkan kode promo menarik!</p>
+          
+          <div class="imers-block imers-card bg-black border-2 border-[#06b6d4] shadow-[0_0_15px_rgba(6,182,212,0.15)] p-6 rounded-none relative text-slate-100 font-mono text-xs leading-relaxed" data-block="card">
+            <div class="flex flex-wrap items-center justify-between gap-4 border-b border-zinc-800 pb-4 mb-4">
+              <div>
+                <h4 class="text-sm font-bold text-white uppercase">Aktivasi Kupon Baru</h4>
+                <p class="text-zinc-400 text-[11px]">Klik <strong>Buat Kupon</strong> di panel promo</p>
+              </div>
+              <div class="bg-zinc-950 border border-[#d946ef] px-4 py-2 font-bold text-[#d946ef] tracking-widest text-sm">
+                PROMO2026
+              </div>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-[11px]">
+              <div class="bg-zinc-900/50 p-3">
+                <strong class="text-[#06b6d4]">● Tipe Diskon:</strong>
+                <p class="text-zinc-400 mt-1">Pilih apakah diskon berupa Persentase (contoh: 10%) atau Nominal Pasti (contoh: Rp 15.000).</p>
+              </div>
+              <div class="bg-zinc-900/50 p-3">
+                <strong class="text-[#06b6d4]">● Minimal Belanja:</strong>
+                <p class="text-zinc-400 mt-1">Tentukan batas minimum belanja agar pelanggan bisa mengaktifkan kupon tersebut saat checkout.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 6 -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <div class="flex items-center gap-2">
+            <span class="text-[#d946ef] font-mono text-lg font-bold">06//</span>
+            <h2 class="text-xl font-mono uppercase font-bold text-[#06b6d4] tracking-wide">Menu Tarif Pengiriman (Ongkir Manual)</h2>
+          </div>
+          <p class="text-sm text-slate-300 font-mono">Sistem ongkir iMersWAstore dirancang sangat mudah dengan menggunakan format <strong>Flat Rate per Area</strong>.</p>
+          
+          <div class="bg-zinc-950 border border-zinc-800 p-5 font-mono text-xs text-slate-300 space-y-3">
+            <div class="flex items-start gap-2">
+              <span class="text-[#d946ef] font-bold">01.</span>
+              <p>Klik <strong class="text-white">Tambah Area</strong>, masukkan nama layanan (Misal: <span class="text-cyan-400">"Gojek Jarak Dekat"</span>, <span class="text-cyan-400">"JNE Luar Kota"</span>, <span class="text-cyan-400">"Kecamatan A"</span>).</p>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-[#d946ef] font-bold">02.</span>
+              <p>Masukkan Tarif Ongkir (Misal: <span class="text-yellow-400 font-bold">15000</span>).</p>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-[#d946ef] font-bold">03.</span>
+              <p>Di halaman toko, pembeli diwajibkan memilih salah satu opsi pengiriman ini saat proses checkout.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 7 (INTRO) -->
+        <section class="imers-block imers-section flex flex-col gap-3" data-block="section">
+          <div class="flex items-center gap-2">
+            <span class="text-[#d946ef] font-mono text-lg font-bold">07//</span>
+            <h2 class="text-xl font-mono uppercase font-bold text-[#06b6d4] tracking-wide">Menu Pesanan Masuk (Order Manager)</h2>
+          </div>
+          <p class="text-sm text-slate-300 font-mono">Semua transaksi dari Toko Online (via link) maupun dari Kasir POS fisik akan berkumpul secara real-time di sini.</p>
+        </section>
+      </main>
+
+      <footer class="imers-block mt-8 pt-4 border-t border-zinc-800 flex justify-between items-center text-[10px] font-mono text-zinc-500" data-block="footer">
+        <span>DOC ID: IMERS-MANUAL-PAGE-2</span>
+        <span>Halaman 2 dari 5</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- PAGE 3 -->
+  <section class="break-after-page py-8 sm:py-12 flex flex-col gap-6 sm:gap-8 border-b border-zinc-800" data-block="page">
+    <div class="imers-container mx-auto max-w-[960px] w-full px-6 sm:px-12" role="document" aria-label="Page 3">
+      <header class="imers-block mb-4" data-block="header">
+        <div class="flex justify-between items-center text-[10px] font-mono text-zinc-500 mb-2">
+          <span>iMersWAstore Dashboard Guide</span>
+          <span>Halaman 3</span>
+        </div>
+        <div class="h-[2px] bg-gradient-to-r from-[#d946ef] to-transparent"></div>
+      </header>
+
+      <main class="imers-block flex flex-col gap-8" data-block="main">
+        <!-- SECTION 7 CONTINUED -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <h3 class="text-sm font-mono font-bold text-zinc-400 uppercase tracking-widest">[Lanjutan] Menu Pesanan Masuk (Order Manager)</h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-zinc-950 border border-zinc-800 p-4 font-mono text-xs relative">
+              <div class="absolute top-0 right-0 bg-yellow-500 text-black font-bold px-1.5 py-0.5 text-[9px]">STATUS</div>
+              <h4 class="text-[#06b6d4] font-bold mb-1">Status &quot;Baru&quot;</h4>
+              <p class="text-zinc-300">Artinya pembeli baru mengirimkan pesanan ke WhatsApp Anda.</p>
+            </div>
+            <div class="bg-zinc-950 border border-zinc-800 p-4 font-mono text-xs relative">
+              <div class="absolute top-0 right-0 bg-emerald-500 text-black font-bold px-1.5 py-0.5 text-[9px]">PROSES</div>
+              <h4 class="text-emerald-400 font-bold mb-1">Tandai Selesai</h4>
+              <p class="text-zinc-300">Jika uang sudah diterima dan barang dikirim, klik tombol ini. Status berubah jadi <strong>Selesai</strong> &amp; tercatat ke Grafik Pendapatan.</p>
+            </div>
+            <div class="bg-zinc-950 border border-zinc-800 p-4 font-mono text-xs relative">
+              <div class="absolute top-0 right-0 bg-rose-500 text-black font-bold px-1.5 py-0.5 text-[9px]">CANCEL</div>
+              <h4 class="text-rose-400 font-bold mb-1">Batal &amp; Hapus</h4>
+              <p class="text-zinc-300">Gunakan jika pembeli melakukan <em>hit and run</em> (order fiktif) untuk menjaga kebersihan data.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 8 -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <div class="flex items-center gap-2">
+            <span class="text-[#d946ef] font-mono text-lg font-bold">08//</span>
+            <h2 class="text-xl font-mono uppercase font-bold text-[#06b6d4] tracking-wide">Menu Kasir POS (Point of Sale)</h2>
+          </div>
+          <p class="text-sm text-slate-300 font-mono">Gunakan menu ini jika Anda berjualan secara <strong>offline</strong> di ruko/café dan ada pembeli datang langsung.</p>
+          
+          <div class="imers-block imers-card bg-black border-2 border-[#d946ef] shadow-[0_0_15px_rgba(217,70,239,0.15)] p-6 sm:p-8 rounded-none relative text-slate-100 font-mono text-xs leading-relaxed" data-block="card">
+            <div class="grid grid-cols-1 gap-4">
+              <div class="flex gap-4 items-start">
+                <span class="w-6 h-6 rounded-full bg-[#d946ef] text-black font-bold flex items-center justify-center shrink-0">1</span>
+                <div>
+                  <strong class="text-white">Cari Produk:</strong> Cari nama barang, lalu klik kotaknya. Barang akan otomatis masuk ke "Keranjang Kasir" di layar sebelah kanan.
+                </div>
+              </div>
+              <div class="flex gap-4 items-start">
+                <span class="w-6 h-6 rounded-full bg-[#d946ef] text-black font-bold flex items-center justify-center shrink-0">2</span>
+                <div>
+                  <strong class="text-white">Atur Qty:</strong> Tambah/kurangi jumlah beli secara dinamis.
+                </div>
+              </div>
+              <div class="flex gap-4 items-start">
+                <span class="w-6 h-6 rounded-full bg-[#d946ef] text-black font-bold flex items-center justify-center shrink-0">3</span>
+                <div>
+                  <strong class="text-white">Lanjut Pembayaran:</strong> Akan muncul pop-up canggih. Anda bisa memasukkan Kupon atau Ongkir (jika melayani delivery order manual via WA).
+                </div>
+              </div>
+              <div class="flex gap-4 items-start">
+                <span class="w-6 h-6 rounded-full bg-[#d946ef] text-black font-bold flex items-center justify-center shrink-0">4</span>
+                <div>
+                  <strong class="text-white">Metode Bayar &amp; Kembalian:</strong> Jika pilih Tunai/Cash, masukkan nominal uang yang diberikan pembeli. Sistem otomatis menghitung Uang Kembalian.
+                </div>
+              </div>
+              <div class="flex gap-4 items-start">
+                <span class="w-6 h-6 rounded-full bg-[#d946ef] text-black font-bold flex items-center justify-center shrink-0">5</span>
+                <div>
+                  <strong class="text-white">Konfirmasi &amp; Cetak:</strong> Klik tombol hijau. Stok akan terpotong, data masuk ke riwayat order, dan Browser akan memunculkan pop-up Print. Print ini otomatis menyesuaikan ukuran <strong>Printer Thermal Kasir Bluetooth (58mm)</strong>.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 9 -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <div class="flex items-center gap-2">
+            <span class="text-[#d946ef] font-mono text-lg font-bold">09//</span>
+            <h2 class="text-xl font-mono uppercase font-bold text-[#06b6d4] tracking-wide">Menu Video Panduan</h2>
+          </div>
+          <div class="imers-block imers-card bg-black border-2 border-[#06b6d4] shadow-[0_0_15px_rgba(6,182,212,0.15)] p-6 rounded-none relative text-slate-100 font-mono text-xs leading-relaxed" data-block="card">
+            <p class="mb-3">Berisi daftar putar (Playlist) video tutorial YouTube yang telah diatur oleh <strong class="text-[#d946ef]">Super Admin</strong> untuk membantu Anda memahami strategi jualan atau fitur aplikasi.</p>
+            <p class="text-[#06b6d4]">Klik salah satu judul di samping kanan untuk memutar video panduan secara instan.</p>
+          </div>
+        </section>
+
+        <!-- SECTION 10 -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <div class="flex items-center gap-2">
+            <span class="text-[#d946ef] font-mono text-lg font-bold">10//</span>
+            <h2 class="text-xl font-mono uppercase font-bold text-[#06b6d4] tracking-wide">Menu Pengaturan Toko &amp; WA Gateway</h2>
+          </div>
+          <p class="text-sm text-slate-300 font-mono">Menu paling vital untuk mengatur <strong class="text-[#d946ef]">&quot;Nyawa&quot;</strong> bisnis Anda.</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-zinc-950 border border-zinc-800 p-5 font-mono text-xs space-y-3">
+              <h4 class="text-[#d946ef] font-bold text-sm uppercase">A. Profil Toko &amp; Integrasi</h4>
+              <ul class="space-y-2 text-zinc-300">
+                <li>• Ganti Nama Toko, Slug URL (alamat web Anda), dan masukkan Link Logo.</li>
+                <li>• Masukkan nomor WA tujuan order. Harus menggunakan format <code class="text-yellow-400">"62"</code> (Contoh: <code class="text-emerald-400">628123456789</code>).</li>
+                <li>• <strong class="text-white">Desain Toko:</strong> Ubah warna tema background web dan tambahkan Banner Slider (URL gambar).</li>
+              </ul>
+            </div>
+
+            <div class="bg-zinc-950 border border-zinc-800 p-5 font-mono text-xs space-y-3">
+              <h4 class="text-[#06b6d4] font-bold text-sm uppercase">B. Integrasi Pembayaran</h4>
+              <p class="text-zinc-300">Masukkan URL Gambar <strong class="text-white">QRIS Statis</strong> Anda dan ketikkan informasi nomor rekening Bank Anda.</p>
+              <div class="bg-zinc-900 p-3 border border-zinc-800 font-mono text-[11px] text-zinc-400 mt-2">
+                Contoh: &quot;BCA 12345678 a/n Budi&quot;
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="imers-block mt-8 pt-4 border-t border-zinc-800 flex justify-between items-center text-[10px] font-mono text-zinc-500" data-block="footer">
+        <span>DOC ID: IMERS-MANUAL-PAGE-3</span>
+        <span>Halaman 3 dari 5</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- PAGE 4 -->
+  <section class="break-after-page py-8 sm:py-12 flex flex-col gap-6 sm:gap-8 border-b border-zinc-800" data-block="page">
+    <div class="imers-container mx-auto max-w-[960px] w-full px-6 sm:px-12" role="document" aria-label="Page 4">
+      <header class="imers-block mb-4" data-block="header">
+        <div class="flex justify-between items-center text-[10px] font-mono text-zinc-500 mb-2">
+          <span>iMersWAstore Dashboard Guide</span>
+          <span>Halaman 4</span>
+        </div>
+        <div class="h-[2px] bg-gradient-to-r from-[#06b6d4] to-transparent"></div>
+      </header>
+
+      <main class="imers-block flex flex-col gap-8" data-block="main">
+        <!-- SECTION 10 CONTINUED - C -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <h4 class="text-[#d946ef] font-bold font-mono text-sm uppercase tracking-wide">C. Integrasi WA Gateway (Bot WhatsApp)</h4>
+          <p class="text-xs text-slate-300 font-mono">Membuat notifikasi dan struk digital otomatis langsung terkirim ke HP pembeli:</p>
+          
+          <div class="bg-zinc-950 border border-zinc-800 p-5 font-mono text-xs text-slate-300 space-y-3">
+            <div class="flex items-start gap-2">
+              <span class="text-[#06b6d4] font-bold">1.</span>
+              <p><strong class="text-white">Pilih Provider:</strong> iMersWAstore mendukung 4 provider: <strong class="text-[#d946ef]">Fonnte, WAplus, StarSender, dan Xsender</strong>.</p>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-[#06b6d4] font-bold">2.</span>
+              <p><strong class="text-white">API Token:</strong> Masukkan Token/Device Key yang Anda dapatkan dari provider tersebut.</p>
+            </div>
+            <div class="flex items-start gap-2">
+              <span class="text-[#06b6d4] font-bold">3.</span>
+              <p><strong class="text-white">Nomor Sender:</strong> Masukkan nomor WA Bot Anda (Wajib diisi jika pakai WAplus/Xsender).</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 10 - D -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <h4 class="text-[#06b6d4] font-bold font-mono text-sm uppercase tracking-wide">D. Template Notifikasi WhatsApp (Copywriting Dinamis)</h4>
+          <p class="text-xs text-slate-300 font-mono">Atur pesan yang akan dikirim oleh Bot WA Anda. Gunakan kode <strong class="text-yellow-400">[TAG]</strong> khusus agar sistem bisa mengubahnya menjadi data otomatis secara dinamis!</p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-black border border-zinc-800 p-4 font-mono text-xs">
+              <span class="imers-badge bg-[#d946ef] text-black font-bold px-2 py-0.5 text-[9px] mb-2 inline-block">REGISTRASI</span>
+              <h5 class="text-white font-bold mb-2">Pesan Sambutan &amp; Lupa Password:</h5>
+              <p class="text-zinc-400 mb-2">Gunakan tag:</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="bg-zinc-900 text-cyan-400 px-2 py-1 text-[10px] border border-zinc-800">[NAMA_TOKO]</span>
+                <span class="bg-zinc-900 text-cyan-400 px-2 py-1 text-[10px] border border-zinc-800">[USERNAME]</span>
+                <span class="bg-zinc-900 text-cyan-400 px-2 py-1 text-[10px] border border-zinc-800">[PASSWORD]</span>
+              </div>
+            </div>
+
+            <div class="bg-black border border-zinc-800 p-4 font-mono text-xs">
+              <span class="imers-badge bg-[#06b6d4] text-black font-bold px-2 py-0.5 text-[9px] mb-2 inline-block">STRUK BELANJA</span>
+              <h5 class="text-white font-bold mb-2">Pesan Struk Order (Checkout):</h5>
+              <p class="text-zinc-400 mb-2">Gunakan tag:</p>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="bg-zinc-900 text-fuchsia-400 px-1.5 py-0.5 text-[10px] border border-zinc-800">[NAMA_PEMBELI]</span>
+                <span class="bg-zinc-900 text-fuchsia-400 px-1.5 py-0.5 text-[10px] border border-zinc-800">[ORDER_ID]</span>
+                <span class="bg-zinc-900 text-fuchsia-400 px-1.5 py-0.5 text-[10px] border border-zinc-800">[SUBTOTAL]</span>
+                <span class="bg-zinc-900 text-fuchsia-400 px-1.5 py-0.5 text-[10px] border border-zinc-800">[ONGKIR]</span>
+                <span class="bg-zinc-900 text-fuchsia-400 px-1.5 py-0.5 text-[10px] border border-zinc-800">[DISKON]</span>
+                <span class="bg-zinc-900 text-fuchsia-400 px-1.5 py-0.5 text-[10px] border border-zinc-800">[GRAND_TOTAL]</span>
+                <span class="bg-zinc-900 text-fuchsia-400 px-1.5 py-0.5 text-[10px] border border-zinc-800">[METODE_BAYAR]</span>
+                <span class="bg-zinc-900 text-fuchsia-400 px-1.5 py-0.5 text-[10px] border border-zinc-800">[KURIR]</span>
+                <span class="bg-zinc-900 text-fuchsia-400 px-1.5 py-0.5 text-[10px] border border-zinc-800">[RINCIAN_ORDER]</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SECTION 10 - E & F -->
+        <section class="imers-block imers-section grid grid-cols-1 md:grid-cols-2 gap-4" data-block="section">
+          <div class="imers-block imers-card bg-black border-2 border-[#d946ef] p-6 rounded-none relative text-slate-100 font-mono text-xs leading-relaxed" data-block="card">
+            <h4 class="text-[#d946ef] font-bold text-sm uppercase mb-2">E. Keamanan Ekstra (Secret Tap Login)</h4>
+            <p class="text-zinc-300">Aktifkan fitur ini jika ingin menyembunyikan portal login dari publik demi keamanan. Masukkan jumlah ketukan dan PIN Rahasia Anda.</p>
+          </div>
+          <div class="imers-block imers-card bg-black border-2 border-[#06b6d4] p-6 rounded-none relative text-slate-100 font-mono text-xs leading-relaxed" data-block="card">
+            <h4 class="text-[#06b6d4] font-bold text-sm uppercase mb-2">F. Halaman Legal &amp; Sosial Media</h4>
+            <ul class="space-y-1 text-zinc-300">
+              <li>• Aktifkan <strong class="text-white">Terms of Service</strong> &amp; <strong class="text-white">Privacy Policy</strong> dengan mengetik isinya.</li>
+              <li>• Tambahkan link Instagram, Shopee, TikTok, dll di menu Sosial Media Toko.</li>
+              <li>• <strong class="text-[#d946ef]">Klik Simpan Pengaturan</strong> setiap kali melakukan perubahan.</li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- SECTION 11 (INTRO & A) -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <div class="flex items-center gap-2">
+            <span class="text-[#d946ef] font-mono text-lg font-bold">11//</span>
+            <h2 class="text-xl font-mono uppercase font-bold text-[#06b6d4] tracking-wide">Fitur Khusus: Mode SaaS (Super Admin / Agency)</h2>
+          </div>
+          <p class="text-xs text-rose-400 font-mono uppercase tracking-wider bg-red-950/30 p-2 border border-red-900/50 inline-block">
+            ⚠️ Menu ini HANYA MUNCUL jika peran (role) akun Anda adalah Super Admin atau Agency, dan sistem berjalan di Mode SaaS.
+          </p>
+          
+          <div class="bg-zinc-950 border border-zinc-800 p-5 font-mono text-xs space-y-3">
+            <h4 class="text-white font-bold text-sm uppercase">A. Manajemen Pengguna (Client Management)</h4>
+            <p class="text-zinc-400">Digunakan untuk mengontrol toko-toko yang berlangganan pada Anda:</p>
+            <ul class="space-y-2 text-zinc-300">
+              <li>
+                <strong class="text-[#06b6d4]">• Buat Toko Baru:</strong> Buatkan akun toko secara manual untuk klien tanpa mereka harus mendaftar (Otomatis status Aktif).
+              </li>
+              <li>
+                <strong class="text-[#06b6d4]">• Approve Klien:</strong> Jika klien mendaftar sendiri lewat halaman depan, statusnya adalah Pending. Klik tombol <span class="text-emerald-400">✓ Approve</span> agar mereka bisa menggunakan sistem.
+              </li>
+              <li>
+                <strong class="text-[#06b6d4]">• Edit Expiration Date (Masa Aktif):</strong> Klik edit pada nama toko klien, ubah kolom <strong class="text-yellow-400">Expired At</strong> (Format: YYYY-MM-DD). Jika masa tenggang lewat, toko klien otomatis terkunci dan etalase ditutup sistem.
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      <footer class="imers-block mt-8 pt-4 border-t border-zinc-800 flex justify-between items-center text-[10px] font-mono text-zinc-500" data-block="footer">
+        <span>DOC ID: IMERS-MANUAL-PAGE-4</span>
+        <span>Halaman 4 dari 5</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- PAGE 5 -->
+  <section class="break-after-page py-8 sm:py-12 flex flex-col gap-6 sm:gap-8" data-block="page">
+    <div class="imers-container mx-auto max-w-[960px] w-full px-6 sm:px-12" role="document" aria-label="Page 5">
+      <header class="imers-block mb-4" data-block="header">
+        <div class="flex justify-between items-center text-[10px] font-mono text-zinc-500 mb-2">
+          <span>iMersWAstore Dashboard Guide</span>
+          <span>Halaman 5</span>
+        </div>
+        <div class="h-[2px] bg-gradient-to-r from-[#d946ef] to-transparent"></div>
+      </header>
+
+      <main class="imers-block flex flex-col gap-8" data-block="main">
+        <!-- SECTION 11 CONTINUED - A & B & C -->
+        <section class="imers-block imers-section flex flex-col gap-6" data-block="section">
+          <div class="bg-zinc-950 border border-zinc-800 p-5 font-mono text-xs space-y-2">
+            <h4 class="text-[#rose-400] text-rose-400 font-bold text-sm uppercase">[Lanjutan] Client Management</h4>
+            <div class="flex items-start gap-2 text-zinc-300">
+              <span class="text-rose-500 font-bold">•</span>
+              <p><strong class="text-white">Hapus Toko:</strong> Hapus klien secara permanen. <span class="text-rose-400 font-bold">(Awas: Produk dan data order klien tersebut akan ikut lenyap!)</span>.</p>
+            </div>
+          </div>
+
+          <div class="imers-block imers-card bg-black border-2 border-[#06b6d4] shadow-[0_0_15px_rgba(6,182,212,0.15)] p-6 rounded-none relative text-slate-100 font-mono text-xs leading-relaxed" data-block="card">
+            <h4 class="text-[#06b6d4] font-bold text-sm uppercase mb-3">B. Kelola Paket Harga (Hanya Super Admin)</h4>
+            <p class="text-zinc-300 mb-3">Membuat daftar paket berlangganan untuk para pengguna:</p>
+            <ul class="space-y-2 text-zinc-400">
+              <li>• <strong class="text-white">Buat paket:</strong> Misal: <span class="text-emerald-400">"Sultan Tahunan", Harga: 150000</span>.</li>
+              <li>• <strong class="text-white">Tentukan peran (Role Hasil Upgrade):</strong> Apakah pembeli paket mendapat akses "User Biasa" atau akses "Agency" (bisa buat toko lagi).</li>
+              <li>• Daftar paket ini otomatis muncul pada tombol "Upgrade Sekarang" di dashboard pengguna biasa Anda.</li>
+            </ul>
+          </div>
+
+          <div class="imers-block imers-card bg-black border-2 border-[#d946ef] shadow-[0_0_15px_rgba(217,70,239,0.15)] p-6 rounded-none relative text-slate-100 font-mono text-xs leading-relaxed" data-block="card">
+            <h4 class="text-[#d946ef] font-bold text-sm uppercase mb-3">C. Pengaturan Sistem Global (Hanya Super Admin)</h4>
+            <ul class="space-y-3 text-zinc-300">
+              <li>
+                <strong class="text-white">● Mode Platform:</strong> Saklar untuk mengubah sistem Anda dari "SaaS Mode" (Bisa diternakkan/Buka Pendaftaran) menjadi "Single Store" (Hanya untuk 1 toko, menu manajemen hilang).
+              </li>
+              <li>
+                <strong class="text-white">● Visibilitas Landing Page:</strong> Mematikan fitur landing page depan (<code class="text-cyan-400">index.html</code>) jika Anda hanya ingin menampilkan sistem sebagai portal login privat.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- CONCLUSION / OUTRO -->
+        <aside class="imers-block imers-callout bg-black border-2 border-emerald-500/50 p-6 rounded-none font-mono text-xs sm:text-sm text-slate-300 leading-relaxed relative overflow-hidden" data-block="callout">
+          <div class="absolute top-0 left-0 w-1.5 h-full bg-emerald-500"></div>
+          <p class="mb-2 text-emerald-400 font-bold uppercase tracking-wider">Success Target</p>
+          <p class="text-zinc-200">
+            Panduan ini dibuat untuk memudahkan operasional bisnis Anda. Raih omset maksimal dengan perpaduan jualan Online &amp; Kasir Offline dalam satu platform!
+          </p>
+        </aside>
+
+        <!-- SYSTEM CREDITS / SIGNATURE -->
+        <div class="imers-block imers-decor mt-8 pt-8 border-t border-zinc-800 flex flex-col items-center gap-3" data-block="decor">
+          <div class="flex items-center gap-2">
+            <span class="w-2.5 h-2.5 bg-[#d946ef]"></span>
+            <span class="w-2.5 h-2.5 bg-[#06b6d4]"></span>
+            <span class="w-2.5 h-2.5 bg-yellow-400"></span>
+          </div>
+          <p class="text-xs font-mono text-zinc-500 uppercase tracking-widest text-center">
+            Developed by <span class="text-[#06b6d4] font-bold">Terry Katar</span> | <span class="text-[#d946ef] font-bold">iMersnesia.com</span>
+          </p>
+        </div>
+      </main>
+
+      <footer class="imers-block mt-8 pt-4 flex justify-between items-center text-[10px] font-mono text-zinc-500" data-block="footer">
+        <span>DOC ID: IMERS-MANUAL-PAGE-5</span>
+        <span>Halaman 5 dari 5</span>
+      </footer>
+    </div>
+  </section>
+
+</body>
+</html>
