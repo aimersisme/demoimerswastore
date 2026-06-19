@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="neumorphism">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panduan Lengkap Dashboard Agency - iMersWAstore</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #f3f4f6;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .font-display {
+      font-family: 'Playfair Display', serif;
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased bg-[#f3f4f6] min-h-screen py-8 px-4 sm:px-6 lg:px-8">
+
+  <!-- PAGE 1 -->
+  <section class="break-after-page min-h-fit py-6 md:py-10 flex flex-col justify-start gap-6 border-b border-slate-200 last:border-b-0" data-block="page">
+    <div class="imers-container mx-auto max-w-[960px] w-full p-6 sm:p-10" role="document" aria-label="Page 1">
+      
+      <!-- Header Area -->
+      <header class="imers-block mb-10" data-block="header">
+        <div class="flex items-center gap-4 mb-6">
+          <div class="w-16 h-16 rounded-2xl bg-[#f3f4f6] flex items-center justify-center shadow-[6px_6px_12px_#d1d5db,-6px_-6px_12px_#ffffff] border border-white/40">
+            <svg class="w-9 h-9 text-[#059669]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <div class="imers-badge bg-[#f3f4f6] text-[#059669] px-4 py-1.5 rounded-xl shadow-[inset_2px_2px_5px_-1px_rgba(0,0,0,0.1),_inset_-2px_-2px_5px_0px_white] font-semibold text-xs tracking-wider uppercase">
+            Agency Guide
+          </div>
+        </div>
+        
+        <h1 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-none mb-4">
+          Panduan Lengkap <br><span class="text-[#059669]">Dashboard Agency</span>
+        </h1>
+        <p class="text-lg font-medium text-slate-600 font-display italic">
+          (iMersWAstore)
+        </p>
+      </header>
+
+      <main class="imers-block flex flex-col gap-8" data-block="main">
+        <!-- Intro Card -->
+        <div class="imers-card bg-[#f3f4f6] rounded-3xl p-8 shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border border-white/40">
+          <p class="text-base leading-relaxed text-slate-700">
+            Selamat datang, <strong class="text-slate-900">Mitra Agency iMersWAstore!</strong> Panduan ini dirancang khusus untuk Anda pemegang lisensi Agency. Sebagai Agency, Anda memiliki dua keuntungan sekaligus:
+          </p>
+          
+          <!-- Bento Cards Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
+            <div class="p-6 rounded-2xl bg-[#f3f4f6] shadow-[inset_4px_4px_8px_#d1d5db,inset_-4px_-4px_8px_#ffffff] border border-white/20">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="flex items-center justify-center w-8 h-8 rounded-full bg-[#059669]/10 text-[#059669] font-bold text-sm shadow-sm">1</span>
+                <h3 class="font-bold text-slate-900">Penyedia Layanan (SaaS)</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Anda bisa menjual jasa pembuatan web toko online/POS ke klien UMKM dan memegang kontrol penuh atas akun mereka.
+              </p>
+            </div>
+            <div class="p-6 rounded-2xl bg-[#f3f4f6] shadow-[inset_4px_4px_8px_#d1d5db,inset_-4px_-4px_8px_#ffffff] border border-white/20">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="flex items-center justify-center w-8 h-8 rounded-full bg-[#10b981]/10 text-[#10b981] font-bold text-sm shadow-sm">2</span>
+                <h3 class="font-bold text-slate-900">Pemilik Toko (Merchant)</h3>
+              </div>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Anda tetap memiliki fitur etalase dan kasir POS penuh untuk menjual produk fisik atau digital milik Anda sendiri.
+              </p>
+            </div>
+          </div>
+          
+          <p class="text-sm font-semibold text-[#059669] mt-6 flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 9l3 3m0 0l-3 3m3-3H8m13 0a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </svg>
+            Mari kita bedah cara memaksimalkan semua fitur di Dashboard Anda!
+          </p>
+        </div>
+
+        <!-- Section 1 -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
+            <span class="text-[#059669] font-mono">1.</span> Akses &amp; Cara Login Anda
+          </h2>
+          <p class="text-sm text-slate-600 -mt-2">
+            Sebagai pengelola sistem, Anda bisa masuk ke Dashboard melalui dua jalur:
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Standard Login -->
+            <div class="imers-card bg-[#f3f4f6] rounded-3xl p-6 shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border border-white/40 flex flex-col justify-between">
+              <div>
+                <span class="text-xs font-bold text-slate-400 font-mono tracking-widest uppercase">Jalur 1</span>
+                <h4 class="text-lg font-bold text-slate-900 mt-1 mb-3">Halaman Login Standar</h4>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  Buka URL <span class="font-mono text-xs bg-emerald-50 text-[#059669] px-2 py-0.5 rounded border border-[#059669]/20 shadow-sm">domainanda.com/login.html</span>, lalu masukkan <strong class="text-slate-800">Username</strong> dan <strong class="text-slate-800">Password</strong> Agency Anda.
+                </p>
+              </div>
+            </div>
+            
+            <!-- Secret Tap Login -->
+            <div class="imers-card bg-[#f3f4f6] rounded-3xl p-6 shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border border-white/40 flex flex-col justify-between">
+              <div>
+                <span class="text-xs font-bold text-slate-400 font-mono tracking-widest uppercase">Jalur 2</span>
+                <h4 class="text-lg font-bold text-slate-900 mt-1 mb-3">Secret Tap Login (Jalur Rahasia)</h4>
+                <p class="text-sm text-slate-600 leading-relaxed mb-3">
+                  Buka halaman depan web Anda, scroll ke paling bawah (Footer). Ketuk teks <strong class="text-slate-950 font-mono text-xs px-1.5 py-0.5 bg-slate-200 rounded">"Powered by"</strong> sebanyak <strong class="text-[#059669]">5 kali</strong> dengan cepat.
+                </p>
+                <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 shadow-inner text-xs text-amber-800 leading-relaxed">
+                  Akan muncul pop-up untuk memasukkan PIN Rahasia Anda. <em>Sangat berguna jika Anda menyembunyikan link login dari publik. Aktifkan di Pengaturan.</em>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2 -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
+            <span class="text-[#059669] font-mono">2.</span> Fitur Utama Agency: Manajemen Pengguna (Klien)
+          </h2>
+          <div class="imers-card bg-[#f3f4f6] rounded-3xl p-6 shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border border-white/40">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="p-2 bg-emerald-100 text-[#059669] rounded-xl">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              </span>
+              <p class="text-sm font-semibold text-slate-800">
+                Ini adalah <span class="text-[#059669]">"Dapur Uang"</span> Anda. Di menu <strong class="text-slate-900">Manajemen Pengguna</strong>, Anda memegang kendali penuh atas semua klien (toko) yang mendaftar atau menyewa sistem kepada Anda.
+              </p>
+            </div>
+          </div>
+          
+          <!-- Sub section A -->
+          <div class="mt-2">
+            <h3 class="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+              <span class="inline-block px-2.5 py-0.5 rounded-lg bg-emerald-600 text-white text-xs font-mono">A</span>
+              Cara Membuatkan Toko Klien Baru (Manual Onboarding)
+            </h3>
+            <p class="text-sm text-slate-600 mb-4">
+              Jika ada klien yang sudah transfer biaya jasa ke Anda, buatkan akun mereka di sini:
+            </p>
+            
+            <div class="space-y-4">
+              <div class="flex items-start gap-4 p-4 rounded-2xl bg-[#f3f4f6] shadow-[inset_3px_3px_6px_#d1d5db,inset_-3px_-3px_6px_#ffffff]">
+                <span class="font-mono font-bold text-emerald-600 bg-white shadow-sm px-2.5 py-1 rounded-lg text-xs">01</span>
+                <p class="text-sm text-slate-700 leading-relaxed">
+                  Buka menu <strong class="text-slate-900">Manajemen Pengguna</strong>, lalu klik tombol <span class="bg-emerald-600 text-white text-xs px-2.5 py-1 rounded-lg font-semibold shadow-sm">Buat Toko Baru</span>.
+                </p>
+              </div>
+              <div class="flex items-start gap-4 p-4 rounded-2xl bg-[#f3f4f6] shadow-[inset_3px_3px_6px_#d1d5db,inset_-3px_-3px_6px_#ffffff]">
+                <span class="font-mono font-bold text-emerald-600 bg-white shadow-sm px-2.5 py-1 rounded-lg text-xs">02</span>
+                <div class="text-sm text-slate-700 leading-relaxed w-full">
+                  <p class="font-semibold text-slate-900 mb-2">Masukkan detail klien:</p>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-[#f3f4f6] p-4 rounded-xl shadow-[inset_2px_2px_5px_#c8ccd0,inset_-2px_-2px_5px_#ffffff] border border-white/40">
+                    <div class="space-y-1.5">
+                      <span class="text-xs text-slate-500 font-semibold block">Username</span>
+                      <code class="font-mono text-xs text-[#059669] bg-white px-2 py-1 rounded shadow-sm block">kopisenja_bdg</code>
+                    </div>
+                    <div class="space-y-1.5">
+                      <span class="text-xs text-slate-500 font-semibold block">Email</span>
+                      <code class="font-mono text-xs text-[#059669] bg-white px-2 py-1 rounded shadow-sm block">Email aktif klien</code>
+                    </div>
+                    <div class="space-y-1.5">
+                      <span class="text-xs text-slate-500 font-semibold block">Password Awal (Klien bisa mengubahnya nanti)</span>
+                      <code class="font-mono text-xs text-[#059669] bg-white px-2 py-1 rounded shadow-sm block">123456</code>
+                    </div>
+                    <div class="space-y-1.5">
+                      <span class="text-xs text-slate-500 font-semibold block">Nama Toko</span>
+                      <code class="font-mono text-xs text-[#059669] bg-white px-2 py-1 rounded shadow-sm block">Kopi Senja Bandung</code>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="flex items-start gap-4 p-4 rounded-2xl bg-[#f3f4f6] shadow-[inset_3px_3px_6px_#d1d5db,inset_-3px_-3px_6px_#ffffff]">
+                <span class="font-mono font-bold text-emerald-600 bg-white shadow-sm px-2.5 py-1 rounded-lg text-xs">03</span>
+                <p class="text-sm text-slate-700 leading-relaxed">
+                  Klik tombol <strong class="text-[#059669] font-semibold bg-[#059669]/10 px-2.5 py-1 rounded-lg">Simpan User</strong>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer page -->
+      <footer class="imers-block mt-12 border-t border-slate-200/60 pt-6 flex justify-between items-center text-xs text-slate-400 font-mono" data-block="footer">
+        <span>iMersWAstore Documentation</span>
+        <span class="bg-white px-2.5 py-1 rounded-full shadow-sm border border-slate-200">Page 1</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- PAGE 2 -->
+  <section class="break-after-page min-h-fit py-6 md:py-10 flex flex-col justify-start gap-6 border-b border-slate-200 last:border-b-0" data-block="page">
+    <div class="imers-container mx-auto max-w-[960px] w-full p-6 sm:p-10" role="document" aria-label="Page 2">
+      <main class="imers-block flex flex-col gap-8" data-block="main">
+        
+        <!-- Step 4 manual onboarding card -->
+        <div class="imers-card bg-[#f3f4f6] rounded-3xl p-6 shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border border-white/40">
+          <div class="flex items-start gap-4">
+            <span class="font-mono font-bold text-emerald-600 bg-white shadow-sm px-2.5 py-1 rounded-lg text-xs">04</span>
+            <div>
+              <h4 class="font-bold text-slate-900 mb-1">Proses Selesai Otomatis</h4>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Akun akan langsung berstatus <span class="text-xs font-bold text-[#059669] bg-emerald-100 px-2 py-0.5 rounded-full">Approved (Aktif)</span> dan sistem akan otomatis membuatkan etalase toko untuk klien tersebut.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sub section B -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-emerald-600 text-white text-xs font-mono">B</span>
+            Menerima Klien dari Jalur Pendaftaran (Approve)
+          </h3>
+          <p class="text-sm text-slate-600 -mt-2">
+            Jika Anda membuka fitur Landing Page pendaftaran, calon klien yang mendaftar sendiri akan masuk dengan status <span class="text-xs font-bold text-amber-700 bg-amber-100 px-2.5 py-0.5 rounded-full">Pending</span>.
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-2">
+            <div class="p-5 rounded-2xl bg-[#f3f4f6] shadow-[inset_4px_4px_8px_#d1d5db,inset_-4px_-4px_8px_#ffffff] border border-white/20 flex flex-col justify-between">
+              <div>
+                <span class="text-xs font-bold text-slate-400 font-mono">Langkah 1</span>
+                <p class="text-sm text-slate-700 font-medium mt-2">Cari baris nama toko klien yang berlabel kuning <span class="text-xs font-bold text-amber-600 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded">Pending</span>.</p>
+              </div>
+            </div>
+            
+            <div class="p-5 rounded-2xl bg-[#f3f4f6] shadow-[inset_4px_4px_8px_#d1d5db,inset_-4px_-4px_8px_#ffffff] border border-white/20 flex flex-col justify-between">
+              <div>
+                <span class="text-xs font-bold text-slate-400 font-mono">Langkah 2</span>
+                <p class="text-sm text-slate-700 font-medium mt-2">
+                  Setelah klien melakukan konfirmasi pembayaran ke WA Anda, klik tombol <span class="inline-flex items-center gap-1 font-mono text-xs font-bold text-emerald-600 bg-white shadow-sm px-2 py-0.5 rounded">✓ Approve</span>.
+                </p>
+              </div>
+            </div>
+            
+            <div class="p-5 rounded-2xl bg-[#f3f4f6] shadow-[inset_4px_4px_8px_#d1d5db,inset_-4px_-4px_8px_#ffffff] border border-white/20 flex flex-col justify-between">
+              <div>
+                <span class="text-xs font-bold text-slate-400 font-mono">Langkah 3</span>
+                <p class="text-sm text-slate-700 font-medium mt-2">Status berubah menjadi <span class="text-xs font-bold text-emerald-600 bg-emerald-100 px-2 py-0.5 rounded">Approved</span>, dan klien siap menggunakan sistem.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sub section C -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-emerald-600 text-white text-xs font-mono">C</span>
+            Mengatur Masa Langganan (Sistem Billing/Perpanjangan)
+          </h3>
+          <p class="text-sm text-slate-600 -mt-2">
+            Anda bisa menyewakan sistem ini secara bulanan atau tahunan. Gunakan fitur <span class="font-mono font-bold text-slate-950 text-xs px-1.5 py-0.5 bg-slate-200 rounded">Expired At</span> untuk membatasi masa pakai klien:
+          </p>
+          
+          <div class="imers-card bg-[#f3f4f6] rounded-3xl p-6 shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border border-white/40 space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-slate-700">
+              <div class="flex items-start gap-3">
+                <span class="text-xs font-mono bg-white rounded shadow-sm px-2 py-0.5 text-[#059669] font-bold">1</span>
+                <p>Di tabel Manajemen Pengguna, klik <strong class="text-slate-900">Edit</strong> pada toko klien.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-xs font-mono bg-white rounded shadow-sm px-2 py-0.5 text-[#059669] font-bold">2</span>
+                <p>Perhatikan kolom <strong class="text-slate-900">Expired At (yyyy-mm-dd)</strong>.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-xs font-mono bg-white rounded shadow-sm px-2 py-0.5 text-[#059669] font-bold">3</span>
+                <p>Masukkan tanggal jatuh tempo. Contoh sewa 1 tahun, masukkan <code class="text-xs bg-emerald-50 text-[#059669] font-mono px-2 py-0.5 rounded font-bold">2027-05-20</code>.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="text-xs font-mono bg-white rounded shadow-sm px-2 py-0.5 text-[#059669] font-bold">4</span>
+                <p>Jika hari ini melewati tanggal tersebut, akun otomatis <strong class="text-red-600">Terkunci</strong>. Etalase hilang &amp; tidak bisa login sampai memperpanjang sewa.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Sub section D -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <h3 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+            <span class="inline-block px-2.5 py-0.5 rounded-lg bg-emerald-600 text-white text-xs font-mono">D</span>
+            Suspend &amp; Hapus Klien
+          </h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="imers-card bg-[#f3f4f6] rounded-3xl p-6 shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border border-white/40 flex flex-col justify-between">
+              <div>
+                <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse"></span>
+                  Blokir Sementara (Suspend)
+                </h4>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  Klik <strong class="text-slate-800">Edit</strong>, ubah status klien dari <span class="text-xs font-mono font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">Approved</span> menjadi <span class="text-xs font-mono font-bold text-amber-600 bg-amber-50 border border-amber-200 px-1.5 py-0.5 rounded">Pending</span>.
+                </p>
+              </div>
+            </div>
+            
+            <div class="imers-card bg-[#f3f4f6] rounded-3xl p-6 shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border border-white/40 flex flex-col justify-between border-l-4 border-l-red-500">
+              <div>
+                <h4 class="font-bold text-red-600 mb-2 flex items-center gap-2">
+                  <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                  </svg>
+                  Hapus Permanen
+                </h4>
+                <p class="text-sm text-slate-600 leading-relaxed mb-3">
+                  Jika klien tidak memperpanjang langganan dan Anda ingin membersihkan database, klik tombol <strong class="text-red-600">Hapus</strong>.
+                </p>
+                <div class="p-3 bg-red-50 rounded-xl border border-red-100 text-xs text-red-800">
+                  <strong>Peringatan:</strong> Menghapus klien akan menghapus seluruh data produk, pengaturan, dan histori pesanan secara permanen.
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 3 -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
+            <span class="text-[#059669] font-mono">3.</span> Fitur Toko Pribadi Anda (Katalog &amp; Penjualan)
+          </h2>
+          <p class="text-sm text-slate-600 -mt-2">
+            Selain mengelola klien, akun Agency Anda berfungsi penuh layaknya toko online biasa. Gunakan fitur ini jika Anda juga menjual produk fisik atau jasa digital (seperti Jasa Setup Web, Jasa Desain, dll).
+          </p>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-5 rounded-2xl bg-[#f3f4f6] shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border border-white/40">
+              <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                Kategori &amp; Katalog
+              </h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Tambahkan produk Anda di menu <strong class="text-slate-800">Katalog Produk</strong>. Atur harga, stok, gambar, dan varian secara praktis.
+              </p>
+            </div>
+            <div class="p-5 rounded-2xl bg-[#f3f4f6] shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border border-white/40">
+              <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                Kupon Diskon
+              </h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Buat kode promo (Misal: <code class="text-xs font-mono font-bold text-emerald-600">DISKON50K</code>) untuk strategi marketing menarik klien baru.
+              </p>
+            </div>
+            <div class="p-5 rounded-2xl bg-[#f3f4f6] shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border border-white/40">
+              <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                Ongkos Kirim
+              </h4>
+              <p class="text-xs text-slate-600 leading-relaxed">
+                Atur tarif area layanan sesuai kebutuhan Anda (atau hapus jika produk Anda 100% digital).
+              </p>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Footer page -->
+      <footer class="imers-block mt-12 border-t border-slate-200/60 pt-6 flex justify-between items-center text-xs text-slate-400 font-mono" data-block="footer">
+        <span>iMersWAstore Documentation</span>
+        <span class="bg-white px-2.5 py-1 rounded-full shadow-sm border border-slate-200">Page 2</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- PAGE 3 -->
+  <section class="break-after-page min-h-fit py-6 md:py-10 flex flex-col justify-start gap-6 border-b border-slate-200 last:border-b-0" data-block="page">
+    <div class="imers-container mx-auto max-w-[960px] w-full p-6 sm:p-10" role="document" aria-label="Page 3">
+      <main class="imers-block flex flex-col gap-8" data-block="main">
+        
+        <!-- Fitur Toko Pribadi continued -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="imers-card bg-[#f3f4f6] rounded-3xl p-6 shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border border-white/40">
+            <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              Kasir POS (Point of Sale)
+            </h4>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Catat transaksi offline dengan cepat dan cetak struk langsung dari printer bluetooth secara nirkabel.
+            </p>
+          </div>
+          <div class="imers-card bg-[#f3f4f6] rounded-3xl p-6 shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border border-white/40">
+            <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+              Pesanan Masuk
+            </h4>
+            <p class="text-sm text-slate-600 leading-relaxed">
+              Pantau setiap konfirmasi pesanan/pembelian dari etalase toko Anda melalui satu dashboard yang rapi.
+            </p>
+          </div>
+        </div>
+
+        <!-- Section 4 -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <div class="flex items-center gap-3 justify-between flex-wrap">
+            <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
+              <span class="text-[#059669] font-mono">4.</span> Pengaturan Sistem &amp; Bot WhatsApp
+            </h2>
+            <span class="imers-badge bg-red-100 text-red-600 px-3 py-1 rounded-xl font-bold text-xs tracking-wide shadow-[inset_2px_2px_5px_-1px_rgba(220,38,38,0.1),_inset_-2px_-2px_5px_0px_white]">
+              PENTING!
+            </span>
+          </div>
+          <p class="text-sm text-slate-600 -mt-2">
+            Otomatisasi adalah kunci utama kesuksesan bisnis SaaS Anda. Buka menu <strong class="text-slate-900">Pengaturan Toko</strong> untuk membuat sistem Anda bekerja 24/7.
+          </p>
+          
+          <!-- Sub section A -->
+          <div class="mt-2 space-y-4">
+            <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+              <span class="inline-block w-2 h-2 rounded-full bg-[#059669]"></span>
+              A. Profil &amp; Desain Identitas
+            </h3>
+            <div class="p-6 rounded-3xl bg-[#f3f4f6] shadow-[inset_4px_4px_8px_#d1d5db,inset_-4px_-4px_8px_#ffffff] border border-white/20">
+              <ul class="space-y-3 text-sm text-slate-700">
+                <li class="flex items-start gap-3.5">
+                  <span class="w-5 h-5 rounded-full bg-[#059669]/10 text-[#059669] flex items-center justify-center shrink-0 text-xs font-bold">✓</span>
+                  <span>Ubah <strong class="text-slate-900">Nama Toko</strong> (Nama Agency Anda), <strong class="text-slate-900">Slug URL</strong>, dan <strong class="text-slate-900">Logo</strong> sesuai identitas brand Anda.</span>
+                </li>
+                <li class="flex items-start gap-3.5">
+                  <span class="w-5 h-5 rounded-full bg-[#059669]/10 text-[#059669] flex items-center justify-center shrink-0 text-xs font-bold">✓</span>
+                  <span>Masukkan <strong class="text-slate-900">Nomor WA Utama</strong> penerima order (Awali dengan kode negara <code class="font-mono text-xs text-[#059669] font-bold bg-white px-1 rounded">62</code>).</span>
+                </li>
+                <li class="flex items-start gap-3.5">
+                  <span class="w-5 h-5 rounded-full bg-[#059669]/10 text-[#059669] flex items-center justify-center shrink-0 text-xs font-bold">✓</span>
+                  <span>Atur warna tema utama website Anda agar terlihat premium dan pasang <strong class="text-slate-900">URL Banner</strong> promosi.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Sub section B -->
+          <div class="mt-4 space-y-4">
+            <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+              <span class="inline-block w-2 h-2 rounded-full bg-[#059669]"></span>
+              B. Integrasi WA Gateway (Kirim Pesan Otomatis)
+            </h3>
+            <p class="text-sm text-slate-600">
+              Sistem ini memungkinkan Anda mengirim data akses login klien dan struk transaksi otomatis secara instan ke WhatsApp.
+            </p>
+            <div class="imers-card bg-[#f3f4f6] rounded-3xl p-6 shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border border-white/40 space-y-3 text-sm">
+              <div class="flex items-start gap-3">
+                <span class="font-mono text-[#059669] font-bold">1.</span>
+                <p>Pilih <strong class="text-slate-900">Provider WA Gateway</strong> yang Anda gunakan (<code class="text-xs font-mono font-bold text-[#059669] bg-white px-1.5 py-0.5 rounded shadow-sm">Fonnte</code> / <code class="text-xs font-mono font-bold text-[#059669] bg-white px-1.5 py-0.5 rounded shadow-sm">WAplus</code> / <code class="text-xs font-mono font-bold text-[#059669] bg-white px-1.5 py-0.5 rounded shadow-sm">StarSender</code> / <code class="text-xs font-mono font-bold text-[#059669] bg-white px-1.5 py-0.5 rounded shadow-sm">Xsender</code>).</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="font-mono text-[#059669] font-bold">2.</span>
+                <p>Masukkan <strong class="text-slate-900">API Token / Device Key</strong> yang didapatkan dari provider Anda.</p>
+              </div>
+              <div class="flex items-start gap-3">
+                <span class="font-mono text-[#059669] font-bold">3.</span>
+                <p>Masukkan <strong class="text-slate-900">Nomor Sender</strong> (Wajib jika Anda menggunakan WAplus / Xsender).</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sub section C -->
+          <div class="mt-4 space-y-4">
+            <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+              <span class="inline-block w-2 h-2 rounded-full bg-[#059669]"></span>
+              C. Copywriting Template (Teks Bot Otomatis)
+            </h3>
+            <p class="text-sm text-slate-600">
+              Trik otomatisasi Agency Anda. Anda bisa mengatur kata-kata yang dikirim oleh sistem ke klien. Gunakan <span class="text-xs font-bold text-emerald-600 bg-emerald-50 border border-emerald-200 px-1.5 py-0.5 rounded">"Tag Dinamis"</span> agar sistem mengubah kodenya menjadi data asli secara otomatis.
+            </p>
+            
+            <!-- Copywriting Templates Grid -->
+            <div class="grid grid-cols-1 gap-6">
+              <!-- Template 1 -->
+              <div class="p-6 rounded-2xl bg-[#f3f4f6] shadow-[inset_4px_4px_8px_#d1d5db,inset_-4px_-4px_8px_#ffffff] border border-white/20">
+                <span class="text-xs font-bold text-slate-400 font-mono block mb-2">TEMPLATE 1: Pesan Sambutan (Saat Toko Baru Dibuat)</span>
+                <div class="p-4 bg-white rounded-xl shadow-inner font-mono text-xs text-slate-600 leading-relaxed whitespace-pre-wrap border border-slate-100">
+Halo [NAMA_TOKO] 👋 Terima kasih telah mempercayakan pembuatan web kepada Agency Kami! Akses dashboard Anda telah aktif:
+Username: [USERNAME]
+Password: [PASSWORD]
+Link Login: [Domain Anda]/login.html
+Segera login dan ganti password Anda demi keamanan.</div>
+              </div>
+              
+              <!-- Template 2 & 3 in grid -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="p-6 rounded-2xl bg-[#f3f4f6] shadow-[inset_4px_4px_8px_#d1d5db,inset_-4px_-4px_8px_#ffffff] border border-white/20">
+                  <span class="text-xs font-bold text-slate-400 font-mono block mb-2">TEMPLATE 2: Pesan Lupa Password</span>
+                  <div class="p-4 bg-white rounded-xl shadow-inner font-mono text-xs text-slate-600 leading-relaxed whitespace-pre-wrap border border-slate-100">
+Halo [NAMA_TOKO],
+sistem baru saja mereset sandi Anda.
+Password baru:
+[PASSWORD]</div>
+                </div>
+                
+                <div class="p-6 rounded-2xl bg-[#f3f4f6] shadow-[inset_4px_4px_8px_#d1d5db,inset_-4px_-4px_8px_#ffffff] border border-white/20">
+                  <span class="text-xs font-bold text-slate-400 font-mono block mb-2">TEMPLATE 3: Pesan Struk Order (Checkout)</span>
+                  <div class="p-4 bg-white rounded-xl shadow-inner font-mono text-xs text-slate-600 leading-relaxed whitespace-pre-wrap border border-slate-100">
+Halo [NAMA_PEMBELI].
+Invoice tagihan layanan:
+[ORDER_ID] [RINCIAN_ORDER]
+Total yang harus dibayar:
+[GRAND_TOTAL]</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer page -->
+      <footer class="imers-block mt-12 border-t border-slate-200/60 pt-6 flex justify-between items-center text-xs text-slate-400 font-mono" data-block="footer">
+        <span>iMersWAstore Documentation</span>
+        <span class="bg-white px-2.5 py-1 rounded-full shadow-sm border border-slate-200">Page 3</span>
+      </footer>
+    </div>
+  </section>
+
+  <!-- PAGE 4 -->
+  <section class="break-after-page min-h-fit py-6 md:py-10 flex flex-col justify-start gap-6 border-b border-slate-100 last:border-b-0" data-block="page">
+    <div class="imers-container mx-auto max-w-[960px] w-full p-6 sm:p-10" role="document" aria-label="Page 4">
+      <main class="imers-block flex flex-col gap-8" data-block="main">
+        
+        <!-- Sub section D -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <h3 class="text-base font-bold text-slate-900 flex items-center gap-2">
+            <span class="inline-block w-2 h-2 rounded-full bg-[#059669]"></span>
+            D. Keamanan &amp; Legalitas
+          </h3>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="imers-card bg-[#f3f4f6] rounded-3xl p-6 shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border border-white/40">
+              <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                <svg class="w-5 h-5 text-[#059669]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                </svg>
+                Secret Tap Login
+              </h4>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Lindungi halaman login Anda dari hacker atau spam jahat. Aktifkan statusnya, tentukan <strong class="text-slate-900">Jumlah Ketukan</strong>, lalu atur <strong class="text-[#059669]">PIN Rahasia</strong> Anda.
+              </p>
+            </div>
+            
+            <div class="imers-card bg-[#f3f4f6] rounded-3xl p-6 shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border border-white/40">
+              <h4 class="font-bold text-slate-900 mb-2 flex items-center gap-2">
+                <svg class="w-5 h-5 text-[#059669]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                </svg>
+                Terms of Service &amp; Privacy Policy
+              </h4>
+              <p class="text-sm text-slate-600 leading-relaxed">
+                Tulis aturan main sewa layanan Agency Anda secara transparan. Link akan otomatis muncul di bagian bawah website agar bisnis Anda terlihat kredibel di mata klien.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 5 -->
+        <section class="imers-block imers-section flex flex-col gap-4" data-block="section">
+          <h2 class="text-2xl font-bold text-slate-900 flex items-center gap-3">
+            <span class="text-[#059669] font-mono">5.</span> Tips Sukses Menjalankan Bisnis Agency
+          </h2>
+          
+          <div class="space-y-4">
+            <div class="p-6 rounded-2xl bg-[#f3f4f6] shadow-[inset_4px_4px_8px_#d1d5db,inset_-4px_-4px_8px_#ffffff] border border-white/20 flex gap-4">
+              <span class="font-mono font-bold text-emerald-600 bg-white shadow-sm px-3 py-1.5 rounded-xl h-fit text-sm">1</span>
+              <div>
+                <h4 class="font-bold text-slate-900 mb-1">Jual Solusi, Bukan Sekadar Web</h4>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  UMKM terkadang bingung cara menggunakan aplikasi. Tawarkan paket lengkap yang bernilai tambah, contoh: <strong class="text-[#059669]">"Web Toko + Jasa Input 50 Produk awal"</strong>. Anda bisa men-cas harga jauh lebih tinggi!
+                </p>
+              </div>
+            </div>
+            
+            <div class="p-6 rounded-2xl bg-[#f3f4f6] shadow-[inset_4px_4px_8px_#d1d5db,inset_-4px_-4px_8px_#ffffff] border border-white/20 flex gap-4">
+              <span class="font-mono font-bold text-emerald-600 bg-white shadow-sm px-3 py-1.5 rounded-xl h-fit text-sm">2</span>
+              <div>
+                <h4 class="font-bold text-slate-900 mb-1">Mananfaatkan Fitur Video Panduan</h4>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  Di menu pengaturan, masukkan link YouTube Anda sendiri yang berisi video tutorial cara pakai web. Video ini akan muncul langsung di dashboard klien agar mereka tidak terus-menerus bertanya ke Anda.
+                </p>
+              </div>
+            </div>
+            
+            <div class="p-6 rounded-2xl bg-[#f3f4f6] shadow-[inset_4px_4px_8px_#d1d5db,inset_-4px_-4px_8px_#ffffff] border border-white/20 flex gap-4">
+              <span class="font-mono font-bold text-emerald-600 bg-white shadow-sm px-3 py-1.5 rounded-xl h-fit text-sm">3</span>
+              <div>
+                <h4 class="font-bold text-slate-900 mb-1">Peringatan Jatuh Tempo</h4>
+                <p class="text-sm text-slate-600 leading-relaxed">
+                  Lakukan follow-up manual secara personal kepada klien setidaknya <strong class="text-[#059669]">H-3</strong> sebelum tanggal <span class="font-mono text-xs bg-slate-200 px-1 rounded">Expired At</span> mereka habis, agar cashflow bulanan/tahunan bisnis Anda terus berputar lancar.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Closing Callout -->
+        <div class="imers-card bg-emerald-50 rounded-3xl p-8 shadow-[8px_8px_16px_#d1d5db,-8px_-8px_16px_#ffffff] border-2 border-[#059669]/20 text-center">
+          <p class="text-base font-semibold text-emerald-950 font-display italic mb-2">
+            "Semoga panduan ini membantu operasional harian Agency Anda. Maksimalkan fitur yang ada untuk meraup profit tanpa batas!"
+          </p>
+          <span class="text-xs text-[#059669] font-mono tracking-widest uppercase font-bold">
+            Let's grow together
+          </span>
+        </div>
+      </main>
+
+      <!-- Footer page -->
+      <footer class="imers-block mt-12 border-t border-slate-200/60 pt-6 flex justify-between items-center text-xs text-slate-400 font-mono" data-block="footer">
+        <span class="font-medium text-slate-500">Developed by Terry Katar | iMersnesia.com</span>
+        <span class="bg-white px-2.5 py-1 rounded-full shadow-sm border border-slate-200">Page 4</span>
+      </footer>
+    </div>
+  </section>
+
+</body>
+</html>
